@@ -9,5 +9,6 @@
 - [ ] Send control message to Robot by Json format (Update this feature in junbot_gui)
 - [ ] Get DeliveryTarget from junbot_gui via MQTT Broker and visual in Control Screen
 - [ ] Send DeliveryTarget to Robot by Json format (Update this feature in junbot_gui)
+- [ ] Notify robot status
 - [ ] Test and fix bug
 
