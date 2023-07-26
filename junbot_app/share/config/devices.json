@@ -1,0 +1,57 @@
+[
+  {
+    "topic-sensor": "sensor/001",
+    "topic-control": "ctrl/mushroom/001",
+    "token": "",
+    "status": {},
+    "info": {
+      "mac-address": "00:00:00:00:00:00",
+      "type": "",
+      "unit": ""
+    }
+  },
+  {
+    "topic-sensor": "sensor/mushroom/002",
+    "topic-control": "ctrl/mushroom/002",
+    "token": "",
+    "status": {},
+    "info": {
+      "mac-address": "00:00:00:00:00:00",
+      "type": "",
+      "unit": ""
+    }
+  },
+  {
+    "topic-sensor": "sensor/mushroom/003",
+    "topic-control": "ctrl/mushroom/003",
+    "token": "",
+    "status": {},
+    "info": {
+      "mac-address": "00:00:00:00:00:00",
+      "type": "",
+      "unit": ""
+    }
+  },
+  {
+    "topic-sensor": "sensor/mushroom/004",
+    "topic-control": "ctrl/mushroom/004",
+    "token": "",
+    "status": {},
+    "info": {
+      "mac-address": "00:00:00:00:00:00",
+      "type": "",
+      "unit": ""
+    }
+  },
+  {
+    "topic-sensor": "sensor/mushroom/005",
+    "topic-control": "ctrl/mushroom/005",
+    "token": "",
+    "status": {},
+    "info": {
+      "mac-address": "00:00:00:00:00:00",
+      "type": "",
+      "unit": ""
+    }
+  }
+]
