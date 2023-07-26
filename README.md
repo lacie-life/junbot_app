@@ -1,5 +1,7 @@
 # junbot_app
 
+[Qt for Android](https://www.youtube.com/watch?v=w2RRgRGHsDA)
+
 # TODO:
 
 - [ ] Clean code and build 
