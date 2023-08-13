@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(kms-Dashboard LANGUAGES CXX)
+project(junbot_app LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,8 +16,8 @@ set(JSON_BuildTests OFF CACHE INTERNAL "")
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 
-#find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-#find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QT_INCLUDES} ${QtQml_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/hdr/)
@@ -50,20 +50,20 @@ source_group("Source Files" FILES ${SOURCES})
 qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/share/qml.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(kms-Dashboard
+    qt_add_executable(junbot_app
             ${HEADERS}
             ${SOURCES}
             ${QT_RESOURCES}
     )
 else()
     if(ANDROID)
-        add_library(kms-Dashboard SHARED
+        add_library(junbot_app SHARED
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
         )
     else()
-        add_executable(kms-Dashboard
+        add_executable(junbot_app
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
@@ -71,9 +71,9 @@ else()
     endif()
 endif()
 
-target_compile_definitions(kms-Dashboard
+target_compile_definitions(junbot_app
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(kms-Dashboard
+target_link_libraries(junbot_app
  # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
 # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)

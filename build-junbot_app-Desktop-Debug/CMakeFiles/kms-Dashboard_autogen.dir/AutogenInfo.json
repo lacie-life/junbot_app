@@ -1,0 +1,148 @@
+{
+	"BUILD_DIR" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/kms-Dashboard_autogen",
+	"CMAKE_BINARY_DIR" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/onbat2/junbot_app/junbot_app",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/onbat2/junbot_app/junbot_app",
+	"HEADERS" : 
+	[
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/AppEngine.h",
+			"MU",
+			"XUT2MCXYTI/moc_AppEngine.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Comon/AppEnums.h",
+			"MU",
+			"XRCR22Q67D/moc_AppEnums.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Comon/Constants_Def.h",
+			"MU",
+			"XRCR22Q67D/moc_Constants_Def.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Handler/QMLHandler.h",
+			"MU",
+			"WHCPTFCPIR/moc_QMLHandler.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Handler/QMQTTHandler.h",
+			"MU",
+			"WHCPTFCPIR/moc_QMQTTHandler.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Handler/QmlMQTTClient.h",
+			"MU",
+			"WHCPTFCPIR/moc_QmlMQTTClient.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/Model/AppModel.h",
+			"MU",
+			"UEYSPHEQL3/moc_AppModel.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/View/HomeScreen.h",
+			"MU",
+			"HFABCISP3Q/moc_HomeScreen.cpp"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/hdr/View/Screen_Def.h",
+			"MU",
+			"HFABCISP3Q/moc_Screen_Def.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/kms-Dashboard_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/kms-Dashboard_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CHARTS_LIB",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_MQTT_LIB",
+		"QT_NETWORK_LIB",
+		"QT_QML_DEBUG",
+		"QT_QML_LIB",
+		"QT_QUICK_LIB",
+		"QT_WIDGETS_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug",
+		"/home/onbat2/junbot_app/junbot_app",
+		"/home/onbat2/junbot_app/junbot_app/hdr",
+		"/usr/local/lib",
+		"/home/onbat2/junbot_app/junbot_app/hdr/Comon",
+		"/home/onbat2/junbot_app/junbot_app/hdr/Handler",
+		"/home/onbat2/junbot_app/junbot_app/hdr/Model",
+		"/home/onbat2/junbot_app/junbot_app/hdr/View",
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
+		"/usr/include/x86_64-linux-gnu/qt5/QtQuick",
+		"/usr/include/x86_64-linux-gnu/qt5/QtQml",
+		"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+		"/usr/include/x86_64-linux-gnu/qt5/QtMqtt",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCharts",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/g++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/kms-Dashboard_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 12,
+	"PARSE_CACHE_FILE" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/kms-Dashboard_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/kms-Dashboard_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/onbat2/junbot_app/junbot_app/src/AppEngine.cpp", "MU" ],
+		[ "/home/onbat2/junbot_app/junbot_app/src/Handler/QMLHandler.cpp", "MU" ],
+		[
+			"/home/onbat2/junbot_app/junbot_app/src/Handler/QQMTTHandler.cpp",
+			"MU"
+		],
+		[
+			"/home/onbat2/junbot_app/junbot_app/src/Handler/QmlMQTTClient.cpp",
+			"MU"
+		],
+		[ "/home/onbat2/junbot_app/junbot_app/src/Model/AppModel.cpp", "MU" ],
+		[ "/home/onbat2/junbot_app/junbot_app/src/View/HomeScreen.cpp", "MU" ],
+		[ "/home/onbat2/junbot_app/junbot_app/src/main.cpp", "MU" ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

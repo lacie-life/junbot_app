@@ -6,6 +6,7 @@
 AppModel* AppModel::m_instance = nullptr;
 QMutex AppModel::m_lock;
 
+
 AppModel *AppModel::getInstance()
 {
     m_lock.lock();
@@ -29,7 +30,7 @@ QString AppModel::robotMess() const
 
 QString AppModel::currentHostName() const
 {
-    return m_sensor->brokerHosts.at(0);
+    return "localhost";
 }
 
 QString AppModel::currentPort() const
@@ -39,8 +40,18 @@ QString AppModel::currentPort() const
 
 void AppModel::startHomeScreen()
 {
-    m_sensor->connectMQTT(m_sensor->brokerHosts.at(0), 1883);
+
     // m_sensor->MQTT_Subcrib(m_sensor->sensorsNode.at(0));
+
+    RobotNode node;
+    node.ip = "xx.xx.xx.xx";
+    node.name = "robot1";
+    node.current_state_topic = "robot1/state";
+    node.control_topic = "robot1/control";
+
+    m_handler->RobotNodes.push_back(node);
+
+    m_handler->MQTT_Subcrib(m_handler->RobotNodes.at(0));
 }
 
 void AppModel::setCurrentScreenID(int currentScreenID)
@@ -78,7 +89,7 @@ void AppModel::setRobotMess(QString msg)
 {
     m_mess = msg;
 
-    emit sensorMessChanged(msg);
+    CONSOLE << m_mess;
 }
 
 void AppModel::setCurrentHostName(QString hostName)
@@ -93,13 +104,14 @@ void AppModel::setCurrentPort(QString port)
 
 AppModel::AppModel(QObject *parent)
     : QObject(parent)
-    , m_currentScreenID {static_cast<int>(AppEnums::SearchScreen)}
+    , m_currentScreenID {static_cast<int>(AppEnums::HomeScreen)}
 {
-    m_client = QMQTTHandler::getInstance();
-    m_client->loadMQTTSetting(DEFS->DEVICE_PATH());
-    m_client->initBokerHost(DEFS->BROKER_PATH());
+    m_handler = QMqttHandler::getInstance();
+    m_handler->loadMQTTSetting(DEFS->DEVICE_PATH());
+    m_handler->initBokerHost(DEFS->BROKER_PATH());
 
-    CONSOLE << m_client->RobotNodes.at(0).topic_data;
+    connect(m_handler, &QMqttHandler::mqttMessageChanged, this, &AppModel::setRobotMess);
+//    connect(m_handler, &QMqttHandler::MQTT_Received, this, &AppModel::setRobotMess);
 
-    connect(m_client, &QMQTTHandler::mqttMessageChanged, this, &AppModel::setRobotMess);
+    m_handler->connectMQTT("localhost", 1883);
 }

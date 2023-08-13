@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QMutex>
 
+#define QMQTT_HANDLER QMqttHandler::getInstance()
+
 struct RobotNode {
     QString name;
     QString ip;
@@ -44,8 +46,9 @@ public slots:
     void onMQTT_disconnected();
     void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
 
-    void MQTT_Publish(RobotNode node, QJsonObject message);
+    void mqtt_Publish(RobotNode node, QJsonObject message);
     void MQTT_Subcrib(RobotNode node);
+    void pub();
 
     void setMqttMessage(QJsonObject &msg);
     void setCurrentRobotNode(RobotNode node);

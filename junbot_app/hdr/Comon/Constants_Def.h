@@ -76,6 +76,7 @@ private:
     /******************************************* RESOURCE ************************************************/
 
     // QML
+    DEF_CONST(QString, QML_HOME , "file:" + BUILD_DIR + "/share/qml/Screen/Home/HomeScreen.qml")
 
     // IMAGES
     DEF_CONST(QString, IMAGE_FOLDER , "file:" + BUILD_DIR + "/share/res/")

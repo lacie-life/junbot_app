@@ -5,7 +5,7 @@
 #include <QString>
 #include <QMutex>
 #include "AppEnums.h"
-#include "QMQTTHandler"
+#include "QMQTTHandler.h"
 
 #define MODEL AppModel::getInstance()
 
@@ -50,7 +50,7 @@ private:
     int m_currentScreenID;
     QString m_mess;
 
-    QMqttHandler *m_client;
+    QMqttHandler *m_handler;
 
 };
 

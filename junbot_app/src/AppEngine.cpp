@@ -4,7 +4,7 @@
 #include "AppEnums.h"
 #include "QMLHandler.h"
 #include "QmlMQTTClient.h"
-#include "DataSource.h"
+#include "QMQTTHandler.h"
 
 ScreenDef* ScreenDef::m_instance = nullptr;
 QMutex ScreenDef::m_lock;
@@ -29,6 +29,7 @@ void AppEngine::initEngine()
     qmlRegisterUncreatableType<AppEnums>("QmlCustomItem", 1, 0, "ENUMS", "Uncreatable");
 
     qmlRegisterType<QmlMqttClient>("MqttClient", 1, 0, "MqttClient");
+    qRegisterMetaType<RobotNode>("RobotNode");
     qmlRegisterUncreatableType<QmlMqttSubscription>("MqttClient", 1, 0, "MqttSubscription", QLatin1String("Subscriptions are read-only"));
 
     // set context properties
@@ -36,6 +37,7 @@ void AppEngine::initEngine()
     m_rootContext->setContextProperty("CONST", DEFS);
     m_rootContext->setContextProperty("SCREEN", SCR_DEF);
     m_rootContext->setContextProperty("AppModel", MODEL);
+    m_rootContext->setContextProperty("QMqttHandler", QMQTT_HANDLER);
 }
 
 void AppEngine::startApplication()

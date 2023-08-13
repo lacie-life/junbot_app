@@ -1,21 +1,30 @@
-#include "QMqttHandler.h"
-#include "AppConstants.h"
+#include "QMQTTHandler.h"
+#include "Constants_Def.h"
 
 QMqttHandler *QMqttHandler::m_instance = nullptr;
 
-QMqttHandler::QMqttHandler(QObject* parent)
-    : QObject(parent)
-{
-}
-
 QMqttHandler *QMqttHandler::getInstance()
 {
-    if(m_instance == nullptr)
+    if (nullptr == m_instance)
     {
         m_instance = new QMqttHandler();
     }
     return m_instance;
 }
+
+QMqttHandler::QMqttHandler(QObject* parent)
+    : QObject(parent)
+{
+//    RobotNode node_defalt;
+//    node_defalt.current_state_topic = "robot1/state";
+
+    QJsonObject jobj;
+
+    jobj["control"] = "test";
+
+    QJsonDocument jSub = QJsonDocument(jobj);
+}
+
 
 QMqttHandler::~QMqttHandler()
 {
@@ -70,16 +79,32 @@ void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicNa
     emit MQTT_Received(m_mqttMessage);
 }
 
-void QMqttHandler::MQTT_Publish(RobotNode node, QJsonObject message)
+void QMqttHandler::mqtt_Publish(RobotNode node, QJsonObject message)
 {
-    QMqttTopicName topic(node.current_state_topic);
+    QMqttTopicName topic(node.control_topic);
 
-    m_client->publish(topic, QJsonDocument(message).toJson());
+    QJsonObject jobj;
+
+    jobj["control"] = "test";
+
+    m_client->publish(topic, QJsonDocument(jobj).toJson());
+}
+
+void QMqttHandler::pub()
+{
+    QString topic = "robot1/control";
+
+    QJsonObject jobj;
+
+    jobj["control"] = "test";
+
+    m_client->publish(topic, QJsonDocument(jobj).toJson());
 }
 
 void QMqttHandler::MQTT_Subcrib(RobotNode node)
 {
-    QMqttTopicFilter filter(node.control_topic);
+    CONSOLE << node.current_state_topic;
+    QMqttTopicFilter filter(node.current_state_topic);
 
     m_client->subscribe(filter);
 }
