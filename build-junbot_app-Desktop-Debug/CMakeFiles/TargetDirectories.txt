@@ -1,4 +1,0 @@
-/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/junbot_app.dir
-/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug/CMakeFiles/junbot_app_autogen.dir
