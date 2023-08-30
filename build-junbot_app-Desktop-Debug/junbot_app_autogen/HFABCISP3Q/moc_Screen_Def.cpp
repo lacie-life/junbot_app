@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ScreenDef_t {
-    QByteArrayData data[10];
-    char stringdata0[103];
+    QByteArrayData data[11];
+    char stringdata0[120];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,17 +35,19 @@ QT_MOC_LITERAL(0, 0, 9), // "ScreenDef"
 QT_MOC_LITERAL(1, 10, 10), // "QML_FOLDER"
 QT_MOC_LITERAL(2, 21, 7), // "QML_APP"
 QT_MOC_LITERAL(3, 29, 15), // "QML_MAIN_SCREEN"
-QT_MOC_LITERAL(4, 45, 8), // "QML_TEST"
-QT_MOC_LITERAL(5, 54, 8), // "QML_HOME"
-QT_MOC_LITERAL(6, 63, 10), // "QML_SEARCH"
-QT_MOC_LITERAL(7, 74, 7), // "QML_MAP"
-QT_MOC_LITERAL(8, 82, 11), // "QML_CONTROL"
-QT_MOC_LITERAL(9, 94, 8) // "QML_USER"
+QT_MOC_LITERAL(4, 45, 16), // "QML_LOGIN_SCREEN"
+QT_MOC_LITERAL(5, 62, 8), // "QML_TEST"
+QT_MOC_LITERAL(6, 71, 8), // "QML_HOME"
+QT_MOC_LITERAL(7, 80, 10), // "QML_SEARCH"
+QT_MOC_LITERAL(8, 91, 7), // "QML_MAP"
+QT_MOC_LITERAL(9, 99, 11), // "QML_CONTROL"
+QT_MOC_LITERAL(10, 111, 8) // "QML_USER"
 
     },
     "ScreenDef\0QML_FOLDER\0QML_APP\0"
-    "QML_MAIN_SCREEN\0QML_TEST\0QML_HOME\0"
-    "QML_SEARCH\0QML_MAP\0QML_CONTROL\0QML_USER"
+    "QML_MAIN_SCREEN\0QML_LOGIN_SCREEN\0"
+    "QML_TEST\0QML_HOME\0QML_SEARCH\0QML_MAP\0"
+    "QML_CONTROL\0QML_USER"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +58,7 @@ static const uint qt_meta_data_ScreenDef[] = {
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
-       9,   14, // properties
+      10,   14, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -72,6 +74,7 @@ static const uint qt_meta_data_ScreenDef[] = {
        7, QMetaType::QString, 0x00095401,
        8, QMetaType::QString, 0x00095401,
        9, QMetaType::QString, 0x00095401,
+      10, QMetaType::QString, 0x00095401,
 
        0        // eod
 };
@@ -88,12 +91,13 @@ void ScreenDef::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: *reinterpret_cast< QString*>(_v) = _t->QML_FOLDER(); break;
         case 1: *reinterpret_cast< QString*>(_v) = _t->QML_APP(); break;
         case 2: *reinterpret_cast< QString*>(_v) = _t->QML_MAIN_SCREEN(); break;
-        case 3: *reinterpret_cast< QString*>(_v) = _t->QML_TEST(); break;
-        case 4: *reinterpret_cast< QString*>(_v) = _t->QML_HOME(); break;
-        case 5: *reinterpret_cast< QString*>(_v) = _t->QML_SEARCH(); break;
-        case 6: *reinterpret_cast< QString*>(_v) = _t->QML_MAP(); break;
-        case 7: *reinterpret_cast< QString*>(_v) = _t->QML_CONTROL(); break;
-        case 8: *reinterpret_cast< QString*>(_v) = _t->QML_USER(); break;
+        case 3: *reinterpret_cast< QString*>(_v) = _t->QML_LOGIN_SCREEN(); break;
+        case 4: *reinterpret_cast< QString*>(_v) = _t->QML_TEST(); break;
+        case 5: *reinterpret_cast< QString*>(_v) = _t->QML_HOME(); break;
+        case 6: *reinterpret_cast< QString*>(_v) = _t->QML_SEARCH(); break;
+        case 7: *reinterpret_cast< QString*>(_v) = _t->QML_MAP(); break;
+        case 8: *reinterpret_cast< QString*>(_v) = _t->QML_CONTROL(); break;
+        case 9: *reinterpret_cast< QString*>(_v) = _t->QML_USER(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -139,17 +143,17 @@ int ScreenDef::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 9;
+        _id -= 10;
     }
 #endif // QT_NO_PROPERTIES
     return _id;

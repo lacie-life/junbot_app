@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AppEnums_t {
-    QByteArrayData data[9];
-    char stringdata0[114];
+    QByteArrayData data[10];
+    char stringdata0[127];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,13 +39,14 @@ QT_MOC_LITERAL(4, 45, 10), // "UserScreen"
 QT_MOC_LITERAL(5, 56, 9), // "E_EVENT_t"
 QT_MOC_LITERAL(6, 66, 13), // "UserClickHome"
 QT_MOC_LITERAL(7, 80, 16), // "UserClickControl"
-QT_MOC_LITERAL(8, 97, 16) // "UserClickAccount"
+QT_MOC_LITERAL(8, 97, 16), // "UserClickAccount"
+QT_MOC_LITERAL(9, 114, 12) // "LoginRequest"
 
     },
     "AppEnums\0E_SCREEN_t\0HomeScreen\0"
     "ControlScreen\0UserScreen\0E_EVENT_t\0"
     "UserClickHome\0UserClickControl\0"
-    "UserClickAccount"
+    "UserClickAccount\0LoginRequest"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +65,7 @@ static const uint qt_meta_data_AppEnums[] = {
 
  // enums: name, alias, flags, count, data
        1,    1, 0x0,    3,   24,
-       5,    5, 0x0,    3,   30,
+       5,    5, 0x0,    4,   30,
 
  // enum data: key, value
        2, uint(AppEnums::HomeScreen),
@@ -73,6 +74,7 @@ static const uint qt_meta_data_AppEnums[] = {
        6, uint(AppEnums::UserClickHome),
        7, uint(AppEnums::UserClickControl),
        8, uint(AppEnums::UserClickAccount),
+       9, uint(AppEnums::LoginRequest),
 
        0        // eod
 };

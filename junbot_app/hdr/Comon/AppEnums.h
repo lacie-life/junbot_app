@@ -22,6 +22,7 @@ public:
         UserClickHome = 0,
         UserClickControl,
         UserClickAccount,
+        LoginRequest,
     };
     Q_ENUM(E_EVENT_t)
 

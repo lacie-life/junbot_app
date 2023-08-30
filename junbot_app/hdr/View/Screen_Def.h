@@ -67,6 +67,7 @@ private:
     DEF_SCREEN(QML_FOLDER       , "file:" + BUILD_DIR + "/share/qml/")
     DEF_SCREEN(QML_APP     , QML_FOLDER() + "main.qml")
     DEF_SCREEN(QML_MAIN_SCREEN  , QML_FOLDER() + "MainScreen.qml")
+    DEF_SCREEN(QML_LOGIN_SCREEN  , QML_FOLDER() + "LoginScreen.qml")
     DEF_SCREEN(QML_TEST         , QML_FOLDER() + "TestScreen.qml")
 
     // detail screen

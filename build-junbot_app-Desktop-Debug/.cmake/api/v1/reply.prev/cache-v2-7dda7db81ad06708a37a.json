@@ -1156,30 +1156,6 @@
 			],
 			"type" : "STATIC",
 			"value" : "/home/onbat2/junbot_app/junbot_app"
-		},
-		{
-			"name" : "kms-Dashboard_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug"
-		},
-		{
-			"name" : "kms-Dashboard_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/onbat2/junbot_app/junbot_app"
 		}
 	],
 	"kind" : "cache",

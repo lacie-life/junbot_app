@@ -227,12 +227,6 @@ junbot_app_BINARY_DIR:STATIC=/home/onbat2/junbot_app/build-junbot_app-Desktop-De
 //Value Computed by CMake
 junbot_app_SOURCE_DIR:STATIC=/home/onbat2/junbot_app/junbot_app
 
-//Value Computed by CMake
-kms-Dashboard_BINARY_DIR:STATIC=/home/onbat2/junbot_app/build-junbot_app-Desktop-Debug
-
-//Value Computed by CMake
-kms-Dashboard_SOURCE_DIR:STATIC=/home/onbat2/junbot_app/junbot_app
-
 
 ########################
 # INTERNAL cache entries

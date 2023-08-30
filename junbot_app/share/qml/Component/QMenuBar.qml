@@ -5,8 +5,8 @@ import "Common"
 QRec{
     id: root
     color: CONST.COLOR_MENU_BAR
-    width: 80
-    height: 680
+    width: 720
+    height: 80
 
     ListView
     {
@@ -18,10 +18,14 @@ QRec{
         currentIndex: AppModel.currentScreenID
         interactive: contentHeight > height
 
+        orientation: ListView.Horizontal
+
         delegate: Item {
+
             id: delegateItem
-            width: parent.width
-            height: width
+
+            width: parent.width/5
+            height: parent.height
 
             QButton {
                 id: icon
@@ -30,7 +34,7 @@ QRec{
                 anchors.fill: parent
                 color: listScreen.currentIndex === index ? CONST.COLOR_MENU_BAR_FOCUS : CONST.COLOR_INVISIBLE
 
-                sizeImage: width * 0.5
+                sizeImage: height * 0.5
                 sourceImage: getIcon(index, listScreen.currentIndex === index)
 
                 onClicked: {
@@ -51,14 +55,10 @@ QRec{
 
         switch(index) {
         case 0:
-            return colorFolder + CONST.SEARCH_IMG
-        case 1:
             return colorFolder + CONST.HOME_IMG
-        case 2:
+        case 1:
             return colorFolder + CONST.CONTROL_IMG
-        case 3:
-            return colorFolder + CONST.MAP_IMG
-        case 4:
+        case 2:
             return colorFolder + CONST.USER_IMG
         default:
             return ""
@@ -68,14 +68,10 @@ QRec{
     function getEventID(index) {
         switch(index) {
         case 0:
-            return ENUMS.UserClickSearch
-        case 1:
             return ENUMS.UserClickHome
-        case 2:
+        case 1:
             return ENUMS.UserClickControl
-        case 3:
-            return ENUMS.UserClickMap
-        case 4:
+        case 2:
             return ENUMS.UserClickAccount
         default:
             return ""

@@ -16,9 +16,23 @@ Window
     visible: true
 
     Loader
-    {
+    {  
+        id: screenLoader
+        visible: true
+        property int loginStatus: AppModel.loginStatus
         anchors.fill: parent
-        source: SCREEN.QML_MAIN_SCREEN
+        onLoginStatusChanged: source = getScreenUrl(loginStatus)
+        Component.onCompleted: {
+            source = getScreenUrl(loginStatus)
+        }
     }
-
+    function getScreenUrl(id){
+        if(id) {
+            return SCREEN.QML_MAIN_SCREEN
+        }
+        else
+        {
+            return SCREEN.QML_LOGIN_SCREEN
+        }
+    }
 }

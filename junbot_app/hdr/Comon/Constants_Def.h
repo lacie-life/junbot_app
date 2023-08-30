@@ -94,9 +94,9 @@ private:
 
 
     /********************************************** GENERAL **********************************************/
-    DEF_CONST(int, MAX_WIDTH        , 1280  )
-    DEF_CONST(int, MAX_HEIGHT       , 680   )
-    DEF_CONST(int, MENU_BAR_WIDTH   , 80    )
+    DEF_CONST(int, MAX_WIDTH        , 720  )
+    DEF_CONST(int, MAX_HEIGHT       , 1080   )
+    DEF_CONST(int, MENU_BAR_WIDTH  , 80    )
 
     DEF_CONST(QString   , EMPTY_STRING , ""    )
 

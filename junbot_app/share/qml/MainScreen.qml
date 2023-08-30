@@ -10,18 +10,18 @@ Item {
 
     QMenuBar {
         id: menuBar
-        width: CONST.MENU_BAR_WIDTH
-        height: root.width
+        width: 720
+        height: 80
         anchors.left: root.left
-        anchors.top: root.top
+        anchors.bottom: root.bottom
     }
 
     QRec {
         id: mainScreen
-        width: root.width - CONST.MENU_BAR_WIDTH
-        height: root.height
+        width: 720
+        height: 1080-80
         anchors.top: root.top
-        anchors.left: menuBar.right
+        anchors.bottom: menuBar.top
 
         color: CONST.COLOR_INVISIBLE
     }
@@ -55,5 +55,5 @@ Item {
             return ""
         }
     }
-
 }
+
