@@ -27,6 +27,9 @@
         <file>res/light/search.svg</file>
         <file>res/light/user.svg</file>
         <file>res/mapmarker.png</file>
+        <file>res/red_bg.jpg</file>
+        <file>res/VMC_Logo.png</file>
+        <file>res/buttonOK.jpg</file>
     </qresource>
     <qresource prefix="/config">
         <file>config/broker.json</file>

@@ -13,34 +13,44 @@ Item {
         id: mainLoginScreen
         width: root.width
         height: root.height
-        color: "gray"
+
+        Image {
+            id: bg
+            anchors.fill: parent
+            source: "qrc:/res/res/red_bg.jpg"
+        }
 
         Rectangle{
             id: mainLoginArea
-            width: mainLoginScreen.width/2
-            height: mainLoginScreen.height/1.5
+            width: mainLoginScreen.width/1.4
+            height: mainLoginScreen.height/2
             anchors.centerIn: parent
+            radius: 35
             color: "white"
 
             Rectangle{
                 id: loginLogo
-                width: 120
-                height: 120
+                width: 300
+                height: 125
                 anchors.top: parent.top
-                anchors.topMargin: 75
+                anchors.topMargin: 60
                 anchors.horizontalCenter: mainLoginArea.horizontalCenter
-                color: "blue"
+                Image {
+                    id: logoViettel
+                    anchors.fill: parent
+                    source: "qrc:/res/res/VMC_Logo.png"
+                }
             }
 
             Rectangle{
                 id: inputArea
-                height: 100
+                height: 120
                 anchors.left: parent.left
-                anchors.leftMargin: 75
+                anchors.leftMargin: 50
                 anchors.right: parent.right
-                anchors.rightMargin: 75
+                anchors.rightMargin: 50
                 anchors.top: loginLogo.bottom
-                anchors.topMargin: 25
+                anchors.topMargin: 50
 
                 TextField{
                     id: userName
@@ -49,9 +59,8 @@ Item {
                     anchors.top: parent.top
                     height: parent.height/2
                     horizontalAlignment: Text.AlignLeft
-                    font.pointSize: 12
+                    font.pointSize: 15
                     placeholderText: "User Name"
-
                 }
 
                 TextField{
@@ -62,28 +71,45 @@ Item {
                     anchors.topMargin: 20
                     height: parent.height/2
                     horizontalAlignment: Text.AlignLeft
-                    font.pointSize: 12
+                    font.pointSize: 15
                     echoMode: TextInput.Password
                     placeholderText: "Password"
                 }
             }
 
-            Button{
+            Rectangle{
                 id: buttonLogin
                 anchors.left: parent.left
-                anchors.leftMargin: Z50
+                anchors.leftMargin: 165
                 anchors.right: parent.right
-                anchors.rightMargin: 75
+                anchors.rightMargin: 165
                 anchors.top: inputArea.bottom
-                anchors.topMargin: 30
-                height: 50
-                text: "Ok"
-
-                onClicked: {
-                    AppModel.setUserName(userName.text)
-                    AppModel.setPass(userPassword.text)
-                    QmlHandler.qmlMessage("LOL")
-                    QmlHandler.qmlSendEvent(ENUMS.LoginRequest)
+                anchors.topMargin: 50
+                height: 60
+                color: "red"
+                border.color: "white"
+                border.width: 2
+                radius: 25
+                Text {
+                    id: name
+                    anchors.left: parent.left
+                    anchors.leftMargin: 76
+                    anchors.top: parent.top
+                    anchors.topMargin: 15
+                    text: "OK"
+                    color: "white"
+                    font.pointSize: 18
+                    font.bold: true
+                }
+                MouseArea{
+                    width: buttonLogin.width
+                    height: buttonLogin.height
+                    onClicked: {
+                        AppModel.setUserName(userName.text)
+                        AppModel.setPass(userPassword.text)
+                        QmlHandler.qmlMessage("LOL")
+                        QmlHandler.qmlSendEvent(ENUMS.LoginRequest)
+                    }
                 }
             }
         }
