@@ -81,10 +81,10 @@ private:
     // IMAGES
     DEF_CONST(QString, IMAGE_FOLDER , "file:" + BUILD_DIR + "/share/res/")
     DEF_CONST(QString, SEARCH_IMG   , "search.svg"  )
-    DEF_CONST(QString, HOME_IMG     , "home.svg"    )
-    DEF_CONST(QString, CONTROL_IMG  , "control.svg" )
+    DEF_CONST(QString, HOME_IMG     , "joystick.png"    )
+    DEF_CONST(QString, CONTROL_IMG  , "navigation.png" )
     DEF_CONST(QString, MAP_IMG      , "map.svg"     )
-    DEF_CONST(QString, USER_IMG     , "user.svg"    )
+    DEF_CONST(QString, USER_IMG     , "info.png"    )
     DEF_CONST(QString, MAP_MARKER   , IMAGE_FOLDER() + "mapmarker.png")
 
     // Config

@@ -30,6 +30,12 @@
         <file>res/red_bg.jpg</file>
         <file>res/VMC_Logo.png</file>
         <file>res/buttonOK.jpg</file>
+        <file>res/dark/navigation.png</file>
+        <file>res/dark/joystick.png</file>
+        <file>res/dark/info.png</file>
+        <file>res/light/navigation.png</file>
+        <file>res/light/joystick.png</file>
+        <file>res/light/info.png</file>
     </qresource>
     <qresource prefix="/config">
         <file>config/broker.json</file>

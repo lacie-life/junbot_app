@@ -4,14 +4,14 @@ import "Common"
 
 QRec{
     id: root
-    color: CONST.COLOR_MENU_BAR
+    color: "red"
     width: 720
     height: 80
 
     ListView
     {
         id: listScreen
-        model: 5
+        model: 3
         width: root.width
         height: root.height
 
@@ -24,17 +24,19 @@ QRec{
 
             id: delegateItem
 
-            width: parent.width/5
+            width: 240
             height: parent.height
 
             QButton {
                 id: icon
+                border.width: 1
+                border.color: "white"
 
                 allowImage: true
                 anchors.fill: parent
                 color: listScreen.currentIndex === index ? CONST.COLOR_MENU_BAR_FOCUS : CONST.COLOR_INVISIBLE
 
-                sizeImage: height * 0.5
+                sizeImage: height * 0.7
                 sourceImage: getIcon(index, listScreen.currentIndex === index)
 
                 onClicked: {
