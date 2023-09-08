@@ -8,77 +8,80 @@ import "../../Component/Common"
 import "../../Component"
 import QmlCustomItem 1.0
 
-//QRec {
-//    visible: true
-//    id: root
-//    color: CONST.COLOR_BACK_GROUND
-
-//    Text {
-//        id: sensorMessage
-//        anchors.centerIn: root
-//        text: qsTr(AppModel.sensorMess)
-//    }
-//}
-
 QRec {
     id: root
 
-    Rectangle{
-        id:mainLoginScreen
-        width: root.width
-        height: root.height
-        color: "gray"
+    Button{
+        id: stopButton
+        height: 150
+        width: 150
+        anchors.centerIn: parent
 
-        Rectangle{
-            id: mainLoginArea
-            width: mainLoginScreen.width/1.5
-            height: mainLoginScreen.height/2
-            anchors.centerIn: parent
-            color: "white"
+        Image{
+            id: stop
+            anchors.fill: parent
+            source: "qrc:/res/res/stop.png"
+        }
+    }
 
-            Rectangle{
-                id: loginLogo
-                width: 120
-                height: 120
-                anchors.top: parent.top
-                anchors.topMargin: 75
-                anchors.horizontalCenter: mainLoginArea.horizontalCenter
+    Button{
+        id: leftButton
+        height: 150
+        width: 150
+        anchors.right: stopButton.left
+        anchors.rightMargin: 15
+        anchors.top: stopButton.top
 
-                color: "red"
-            }
+        Image{
+            id: left
+            anchors.fill: parent
+            source: "qrc:/res/res/left.png"
+        }
+    }
 
-            Rectangle{
-                id:userTextField
-                width: 300
-                height: 50
-                anchors.top: loginLogo.bottom
-                anchors.topMargin: 50
-                anchors.horizontalCenter: mainLoginArea.horizontalCenter
+    Button{
+        id: rightButton
+        height: 150
+        width: 150
+        anchors.left: stopButton.right
+        anchors.leftMargin: 15
+        anchors.top: stopButton.top
 
-                color: "blue"
-            }
+        Image{
+            id: right
+            anchors.fill: parent
+            source: "qrc:/res/res/right.png"
+        }
+    }
 
-            Rectangle{
-                id: passwordTextField
-                width: 300
-                height: 50
-                anchors.top: userTextField.bottom
-                anchors.topMargin: 25
-                anchors.horizontalCenter: mainLoginArea.horizontalCenter
+    Button{
+        id: upButton
+        height: 150
+        width: 150
+        anchors.bottom: stopButton.top
+        anchors.bottomMargin: 15
+        anchors.left: stopButton.left
 
-                color: "blue"
-            }
+        Image{
+            id: up
+            anchors.fill: parent
+            source: "qrc:/res/res/up.png"
+        }
+    }
 
-            Rectangle{
-                id: buttonLogin
-                width: 175
-                height: 70
-                anchors.top: passwordTextField.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: mainLoginArea.horizontalCenter
+    Button{
+        id: downButton
+        height: 150
+        width: 150
+        anchors.top: stopButton.bottom
+        anchors.topMargin: 15
+        anchors.left: stopButton.left
 
-                color: "green"
-            }
+        Image{
+            id: down
+            anchors.fill: parent
+            source: "qrc:/res/res/down.png"
+
         }
     }
 }
