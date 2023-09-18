@@ -11,7 +11,25 @@ import QmlCustomItem 1.0
 QRec {
     id: root
 
-    Button{
+    Rectangle{
+        id: test
+        height: 150
+        width: 150
+        color: "blue"
+
+        MouseArea{
+            height: test.height
+            width: test.width
+            onPressed: {
+                parent.color = "green"
+            }
+            onReleased: {
+                parent.color = "blue"
+            }
+        }
+    }
+
+    Rectangle{
         id: stopButton
         height: 150
         width: 150
@@ -22,14 +40,19 @@ QRec {
             anchors.fill: parent
             source: "qrc:/res/res/stop.png"
         }
+
+        MouseArea{
+            width: stopButton.width
+            height: stopButton.width
+        }
     }
 
-    Button{
+    Rectangle{
         id: leftButton
         height: 150
         width: 150
         anchors.right: stopButton.left
-        anchors.rightMargin: 15
+        anchors.rightMargin: 20
         anchors.top: stopButton.top
 
         Image{
@@ -37,14 +60,19 @@ QRec {
             anchors.fill: parent
             source: "qrc:/res/res/left.png"
         }
+
+        MouseArea{
+            width: leftButton.width
+            height: leftButton.width
+        }
     }
 
-    Button{
+    Rectangle{
         id: rightButton
         height: 150
         width: 150
         anchors.left: stopButton.right
-        anchors.leftMargin: 15
+        anchors.leftMargin: 20
         anchors.top: stopButton.top
 
         Image{
@@ -52,14 +80,19 @@ QRec {
             anchors.fill: parent
             source: "qrc:/res/res/right.png"
         }
+
+        MouseArea{
+            width: rightButton.width
+            height: rightButton.height
+        }
     }
 
-    Button{
+    Rectangle{
         id: upButton
         height: 150
         width: 150
         anchors.bottom: stopButton.top
-        anchors.bottomMargin: 15
+        anchors.bottomMargin: 20
         anchors.left: stopButton.left
 
         Image{
@@ -67,14 +100,19 @@ QRec {
             anchors.fill: parent
             source: "qrc:/res/res/up.png"
         }
+
+        MouseArea{
+            width: upButton.width
+            height: upButton.height
+        }
     }
 
-    Button{
+    Rectangle{
         id: downButton
         height: 150
         width: 150
         anchors.top: stopButton.bottom
-        anchors.topMargin: 15
+        anchors.topMargin: 20
         anchors.left: stopButton.left
 
         Image{
@@ -82,6 +120,10 @@ QRec {
             anchors.fill: parent
             source: "qrc:/res/res/down.png"
 
+            MouseArea{
+                width: downButton.width
+                height: downButton.height
+            }
         }
     }
 }
