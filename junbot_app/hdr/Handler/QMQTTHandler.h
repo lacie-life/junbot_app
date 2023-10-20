@@ -48,7 +48,7 @@ public slots:
 
     void mqtt_Publish(RobotNode node, QJsonObject message);
     void MQTT_Subcrib(RobotNode node);
-    void pub();
+    void pub(QString nod, QString message);
 
     void setMqttMessage(QJsonObject &msg);
     void setCurrentRobotNode(RobotNode node);

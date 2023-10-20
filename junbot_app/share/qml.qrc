@@ -41,6 +41,17 @@
         <file>res/right.png</file>
         <file>res/left.png</file>
         <file>res/down.png</file>
+        <file>res/white_bg.jpg</file>
+        <file>res/up1.png</file>
+        <file>res/up2.png</file>
+        <file>res/stop1.png</file>
+        <file>res/stop2.png</file>
+        <file>res/left1.png</file>
+        <file>res/left2.png</file>
+        <file>res/down2.png</file>
+        <file>res/down1.png</file>
+        <file>res/right1.png</file>
+        <file>res/right2.png</file>
     </qresource>
     <qresource prefix="/config">
         <file>config/broker.json</file>

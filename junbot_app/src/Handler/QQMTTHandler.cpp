@@ -90,13 +90,13 @@ void QMqttHandler::mqtt_Publish(RobotNode node, QJsonObject message)
     m_client->publish(topic, QJsonDocument(jobj).toJson());
 }
 
-void QMqttHandler::pub()
+void QMqttHandler::pub(QString nod, QString message)
 {
     QString topic = "robot1/control";
 
     QJsonObject jobj;
 
-    jobj["control"] = "test";
+    jobj[nod] = message;
 
     m_client->publish(topic, QJsonDocument(jobj).toJson());
 }
