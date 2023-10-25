@@ -101,6 +101,19 @@ void QMqttHandler::pub(QString nod, QString message)
     m_client->publish(topic, QJsonDocument(jobj).toJson());
 }
 
+void QMqttHandler::pubRun(QString Target1, QString Target2, QString Target3)
+{
+    QString topic = "robot1/control";
+
+    QJsonObject jobj;
+
+    jobj["target1"] = Target1;
+    jobj["target2"] = Target2;
+    jobj["target3"] = Target3;
+
+    m_client->publish(topic, QJsonDocument(jobj).toJson());
+}
+
 void QMqttHandler::MQTT_Subcrib(RobotNode node)
 {
     CONSOLE << node.current_state_topic;

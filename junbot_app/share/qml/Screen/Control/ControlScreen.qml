@@ -134,8 +134,8 @@ QRec {
                 var i;
                 for(i = 0; i < buttons.length; i++){
                     gridview.model.append({
-                        myText: buttons[i]
-                    });
+                                              myText: buttons[i]
+                                          });
                 }
 
             }
@@ -158,14 +158,38 @@ QRec {
                 model: ListModel {}
 
                 delegate: Rectangle{
-                width: gridview.cellWidth * 0.9
-                height: gridview.cellHeight * 0.9
-                color: "#FF244B"
+                    id: deleItem
+                    width: gridview.cellWidth * 0.9
+                    height: gridview.cellHeight * 0.9
+                    color: "#FF244B"
                     Text{
+                        id:deleText
                         text: myText
                         anchors.centerIn: parent
                         font.pointSize: 50
                         color: "white"
+                    }
+                    MouseArea{
+                        width: deleItem.width
+                        height: deleItem.height
+                        onClicked: {
+                            console.log(deleText.text)
+                            if(tx_1.text == "+"){
+                                tx_1.text = deleText.text
+                            }else if(tx_2.text == "+"){
+                                tx_2.text = deleText.text
+                            }else if(tx_3.text == "+"){
+                                tx_3.text = deleText.text
+                            }
+                        }
+                        onPressed: {
+                            deleItem.color = "#AD1530"
+                            deleText.color = "#C5C3C3"
+                        }
+                        onReleased: {
+                            deleItem.color = "#FF244B"
+                            deleText.color = "white"
+                        }
                     }
                 }
 
@@ -191,6 +215,22 @@ QRec {
                 text: "Remove Target"
                 font.pixelSize: 24
             }
+
+            MouseArea{
+                width: remove_button.width
+                height: remove_button.height
+                onClicked: {
+                    tx_1.text = "+"
+                    tx_2.text = "+"
+                    tx_3.text = "+"
+                }
+                onPressed: {
+                    remove_button.color = "#B4B2B2"
+                }
+                onReleased: {
+                    remove_button.color = "#f1f1f1"
+                }
+            }
         }
 
         Rectangle{
@@ -211,96 +251,110 @@ QRec {
                 text: "Run"
                 font.pixelSize: 24
             }
+
+            MouseArea{
+                width: run_button.width
+                height: run_button.height
+                onClicked: {
+                    QMqttHandler.pubRun(tx_1.text, tx_2.text, tx_3.text)
+                }
+                onPressed: {
+                    run_button.color = "#B4B2B2"
+                }
+                onReleased: {
+                    run_button.color = "#f1f1f1"
+                }
+            }
         }
     }
 
-//    Rectangle{
-//        id: delivery_box2
-//        anchors.top: delivery_box1.bottom
-//        anchors.topMargin: 60
-//        width: root.width
-//        height: 600
-//        border.width: 2
-//        border.color: "black"
+    //    Rectangle{
+    //        id: delivery_box2
+    //        anchors.top: delivery_box1.bottom
+    //        anchors.topMargin: 60
+    //        width: root.width
+    //        height: 600
+    //        border.width: 2
+    //        border.color: "black"
 
-//        Component.onCompleted: {
-//            var colores = ['orange', 'red', 'green', 'blue', 'cyan', 'brown'];
-//            var ix;
-//            var jx;
-//            for(jx = 0; jx < 3; ++jx){
-//                for(ix = 0; ix < colores.length; ++ix){
-//                    gridview.model.append({
-//                        myColor: colores[ix]
-//                    });
-//                }
-//            }
-//        }
+    //        Component.onCompleted: {
+    //            var colores = ['orange', 'red', 'green', 'blue', 'cyan', 'brown'];
+    //            var ix;
+    //            var jx;
+    //            for(jx = 0; jx < 3; ++jx){
+    //                for(ix = 0; ix < colores.length; ++ix){
+    //                    gridview.model.append({
+    //                        myColor: colores[ix]
+    //                    });
+    //                }
+    //            }
+    //        }
 
-//        GridView{
-//            id: gridview
-//            anchors{
-//                top: parent.top
-//                bottom: parent.bottom
-//                left: parent.left
-//                right:parent.right
-//                leftMargin: 20
-//                rightMargin: 20
-//                topMargin: 20
-//                bottomMargin: 150
-//            }
+    //        GridView{
+    //            id: gridview
+    //            anchors{
+    //                top: parent.top
+    //                bottom: parent.bottom
+    //                left: parent.left
+    //                right:parent.right
+    //                leftMargin: 20
+    //                rightMargin: 20
+    //                topMargin: 20
+    //                bottomMargin: 150
+    //            }
 
-//            cellWidth: width/3
-//            cellHeight: height/3
+    //            cellWidth: width/3
+    //            cellHeight: height/3
 
-//            model: ListModel {}
+    //            model: ListModel {}
 
-//            delegate: Rectangle{
-//            width: gridview.cellWidth * 0.9
-//            height: gridview.cellHeight * 0.9
-//            color: myColor
-//            }
-//        }
-//    }
+    //            delegate: Rectangle{
+    //            width: gridview.cellWidth * 0.9
+    //            height: gridview.cellHeight * 0.9
+    //            color: myColor
+    //            }
+    //        }
+    //    }
 
-//  Rectangle{
-//    y: 250
-//    width: 740
-//    height: 500
-//        Component.onCompleted: {
-//            var colores = ['orange', 'red', 'green', 'blue', 'cyan', 'brown'];
-//            var ix;
-//            var jx;
-//            for(jx = 0; jx < 3; ++jx){
-//                for(ix = 0; ix < colores.length; ++ix){
-//                    gridview.model.append({
-//                        myColor: colores[ix]
-//                    });
-//                }
-//            }
-//        }
+    //  Rectangle{
+    //    y: 250
+    //    width: 740
+    //    height: 500
+    //        Component.onCompleted: {
+    //            var colores = ['orange', 'red', 'green', 'blue', 'cyan', 'brown'];
+    //            var ix;
+    //            var jx;
+    //            for(jx = 0; jx < 3; ++jx){
+    //                for(ix = 0; ix < colores.length; ++ix){
+    //                    gridview.model.append({
+    //                        myColor: colores[ix]
+    //                    });
+    //                }
+    //            }
+    //        }
 
-//        GridView{
-//            id: gridview
-//            anchors{
-//                top: parent.top
-//                bottom: parent.bottom
-//                left: parent.left
-//                right:parent.right
-//                leftMargin: 20
-//                rightMargin: 20
-//            }
+    //        GridView{
+    //            id: gridview
+    //            anchors{
+    //                top: parent.top
+    //                bottom: parent.bottom
+    //                left: parent.left
+    //                right:parent.right
+    //                leftMargin: 20
+    //                rightMargin: 20
+    //            }
 
-//            cellWidth: width/3
-//            cellHeight: height/3
+    //            cellWidth: width/3
+    //            cellHeight: height/3
 
-//            model: ListModel {}
+    //            model: ListModel {}
 
-//            delegate: Rectangle{
-//            width: gridview.cellWidth * 0.9
-//            height: gridview.cellHeight * 0.9
-//            color: myColor
-//            }
-//        }
-//    }
+    //            delegate: Rectangle{
+    //            width: gridview.cellWidth * 0.9
+    //            height: gridview.cellHeight * 0.9
+    //            color: myColor
+    //            }
+    //        }
+    //    }
 }
 
