@@ -2,6 +2,19 @@
 
 [Qt for Android](https://www.youtube.com/watch?v=w2RRgRGHsDA)
 
+# Installation
+
+1. QMQTT
+```
+git clone git://code.qt.io/qt/qtmqtt.git
+git checkout <version of Qt> # version of Qt: v5.12.5
+sudo apt-get install qtbase5-private-dev
+qmake => make => make install
+```
+
+2. Run
+
+
 # TODO:
 
 - [x] Clean code and build 
