@@ -64,18 +64,18 @@ private:
     void operator =(const ScreenDef&) = delete;
 
     // Define screen
-    DEF_SCREEN(QML_FOLDER       , "file:" + BUILD_DIR + "/share/qml/")
-    DEF_SCREEN(QML_APP     , QML_FOLDER() + "main.qml")
-    DEF_SCREEN(QML_MAIN_SCREEN  , QML_FOLDER() + "MainScreen.qml")
-    DEF_SCREEN(QML_LOGIN_SCREEN  , QML_FOLDER() + "LoginScreen.qml")
-    DEF_SCREEN(QML_TEST         , QML_FOLDER() + "TestScreen.qml")
+    DEF_SCREEN(QML_PREFIX       , "qrc:/qml/")
+    DEF_SCREEN(QML_APP          , QML_PREFIX() + "main.qml")
+    DEF_SCREEN(QML_MAIN_SCREEN  , QML_PREFIX() + "MainScreen.qml")
+    DEF_SCREEN(QML_LOGIN_SCREEN , QML_PREFIX() + "LoginScreen.qml")
+    DEF_SCREEN(QML_TEST         , QML_PREFIX() + "TestScreen.qml")
 
     // detail screen
-    DEF_SCREEN(QML_HOME         , QML_FOLDER() + "Screen/Home/HomeScreen.qml")
-    DEF_SCREEN(QML_SEARCH       , QML_FOLDER() + "Screen/Search/SearchScreen.qml")
-    DEF_SCREEN(QML_MAP          , QML_FOLDER() + "Screen/Map/MapScreen.qml")
-    DEF_SCREEN(QML_CONTROL      , QML_FOLDER() + "Screen/Control/ControlScreen.qml")
-    DEF_SCREEN(QML_USER         , QML_FOLDER() + "Screen/User/UserScreen.qml")
+    DEF_SCREEN(QML_HOME         , QML_PREFIX() + "Screen/Home/HomeScreen.qml")
+    DEF_SCREEN(QML_SEARCH       , QML_PREFIX() + "Screen/Search/SearchScreen.qml")
+    DEF_SCREEN(QML_MAP          , QML_PREFIX() + "Screen/Map/MapScreen.qml")
+    DEF_SCREEN(QML_CONTROL      , QML_PREFIX() + "Screen/Control/ControlScreen.qml")
+    DEF_SCREEN(QML_USER         , QML_PREFIX() + "Screen/User/UserScreen.qml")
 
 
 };

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>share/config/broker.json</file>
+        <file>share/config/devices.json</file>
+    </qresource>
+</RCC>
