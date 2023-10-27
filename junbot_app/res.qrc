@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/dark/control.svg</file>
+        <file>res/dark/home.svg</file>
+        <file>res/dark/info.png</file>
+        <file>res/dark/joystick.png</file>
+        <file>res/dark/map.svg</file>
+        <file>res/dark/navigation.png</file>
+        <file>res/dark/search.svg</file>
+        <file>res/dark/user.svg</file>
+        <file>res/light/control.svg</file>
+        <file>res/light/home.svg</file>
+        <file>res/light/info.png</file>
+        <file>res/light/joystick.png</file>
+        <file>res/light/map.svg</file>
+        <file>res/light/navigation.png</file>
+        <file>res/light/search.svg</file>
+        <file>res/light/user.svg</file>
+        <file>res/buttonOK.jpg</file>
+        <file>res/down.png</file>
+        <file>res/left.png</file>
+        <file>res/mapmarker.png</file>
+        <file>res/red_bg.jpg</file>
+        <file>res/right.png</file>
+        <file>res/up.png</file>
+        <file>res/VMC_Logo.png</file>
+        <file>res/white_bg.jpg</file>
+        <file>res/cancel.png</file>
+    </qresource>
+</RCC>

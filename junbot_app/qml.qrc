@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/MainScreen.qml</file>
+        <file>qml/Component/Common/QImage.qml</file>
+        <file>qml/Component/Common/QRec.qml</file>
+        <file>qml/Component/Common/QText.qml</file>
+        <file>qml/Component/Common/QTimer.qml</file>
+        <file>qml/Component/QButton.qml</file>
+        <file>qml/Screen/Home/HomeScreen.qml</file>
+        <file>qml/Screen/Control/ControlScreen.qml</file>
+        <file>qml/Screen/User/UserScreen.qml</file>
+        <file>qml/Component/Common/QSwitch.qml</file>
+        <file>qml/LoginScreen.qml</file>
+        <file>qml/Component/MenuBar.qml</file>
+        <file>qml/Component/MenuItem.qml</file>
+        <file>qml/Component/Common/ControllerButton.qml</file>
+    </qresource>
+</RCC>

@@ -76,27 +76,26 @@ private:
     /******************************************* RESOURCE ************************************************/
 
     // QML
-    DEF_CONST(QString, QML_HOME , "file:" + BUILD_DIR + "/share/qml/Screen/Home/HomeScreen.qml")
+    DEF_CONST(QString, QML_HOME , "qrc:/qml/Screen/Home/HomeScreen.qml")
 
     // IMAGES
-    DEF_CONST(QString, IMAGE_FOLDER , "file:" + BUILD_DIR + "/share/res/")
+    DEF_CONST(QString, IMAGE_PREFIX , "qrc:/res/")
     DEF_CONST(QString, SEARCH_IMG   , "search.svg"  )
     DEF_CONST(QString, HOME_IMG     , "joystick.png"    )
     DEF_CONST(QString, CONTROL_IMG  , "navigation.png" )
     DEF_CONST(QString, MAP_IMG      , "map.svg"     )
     DEF_CONST(QString, USER_IMG     , "info.png"    )
-    DEF_CONST(QString, MAP_MARKER   , IMAGE_FOLDER() + "mapmarker.png")
+    DEF_CONST(QString, MAP_MARKER   , IMAGE_PREFIX() + "mapmarker.png")
 
     // Config
-
     DEF_CONST(QString, BROKER_PATH, ":/config/config/broker.json")
     DEF_CONST(QString, DEVICE_PATH, ":/config/config/devices.json")
 
 
     /********************************************** GENERAL **********************************************/
-    DEF_CONST(int, MAX_WIDTH        , 720  )
-    DEF_CONST(int, MAX_HEIGHT       , 1080   )
-    DEF_CONST(int, MENU_BAR_WIDTH  , 80    )
+    DEF_CONST(int, MAX_WIDTH        , 720   )
+    DEF_CONST(int, MAX_HEIGHT       , 1080  )
+    DEF_CONST(int, MENU_BAR_WIDTH   , 80    )
 
     DEF_CONST(QString   , EMPTY_STRING , ""    )
 

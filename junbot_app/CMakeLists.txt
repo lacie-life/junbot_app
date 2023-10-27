@@ -13,11 +13,8 @@ set(CMAKE_AUTORCC ON)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+find_package(QT NAMES Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QT_INCLUDES} ${QtQml_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/hdr/)
@@ -47,7 +44,9 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/hdr
 source_group("Header Files" FILES ${HEADERS})
 source_group("Source Files" FILES ${SOURCES})
 
-qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/share/qml.qrc)
+qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/qml.qrc)
+qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/res.qrc)
+qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/config.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(junbot_app
