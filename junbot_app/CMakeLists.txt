@@ -66,6 +66,7 @@ else()
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
+                hdr/Comon/Common.h
         )
     endif()
 endif()

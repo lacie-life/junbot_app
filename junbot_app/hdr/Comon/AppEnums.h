@@ -26,6 +26,13 @@ public:
     };
     Q_ENUM(E_EVENT_t)
 
+    enum ConnectState {
+        Disconnected,
+        Connecting,
+        Connected,
+    };
+    Q_ENUM(ConnectState)
+
 signals:
 
 };

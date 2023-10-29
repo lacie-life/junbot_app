@@ -4,14 +4,14 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "AppEnums.h"
-#include "AppModel.h"
+#include "QMQTTHandler.h"
 
 class AppEngine : public QObject
 {
     Q_OBJECT
     QQmlContext *m_rootContext;
     QQmlApplicationEngine m_engine;
+    QMqttHandler *m_handler;
 
 public:
     explicit AppEngine(QObject *parent = nullptr);
@@ -19,6 +19,14 @@ public:
 
     void initEngine();
     void startApplication();
+
+public slots:
+    void handleEvent(int eventID);
+
+private:
+    void initMQTT();
+    void initConnection();
+    void loginAuthenication();
 
 signals:
 

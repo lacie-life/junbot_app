@@ -5,17 +5,10 @@ import QtQuick.Layouts 1.1
 
 import MqttClient 1.0
 import QmlCustomItem 1.0
-import "../../Component/Common"
-import "../../Component"
+import "../Component"
 
 Rectangle {
     id: root
-
-    Image {
-        id: bg
-        anchors.fill: parent
-        source: "qrc:/res/white_bg.jpg"
-    }
 
     Item {
         id: log_area

@@ -1,8 +1,8 @@
 #include "QmlMQTTClient.h"
-#include "Constants_Def.h"
+#include "Common.h"
 
 QmlMqttClient::QmlMqttClient(QObject *parent)
-    : QMqttClient{parent}
+    : QMqttClient { parent }
 {
 
 }
@@ -10,18 +10,22 @@ QmlMqttClient::QmlMqttClient(QObject *parent)
 QmlMqttSubscription *QmlMqttClient::subscribe(const QString &topic)
 {
     auto sub = QMqttClient::subscribe(topic, 0);
-    if(sub == nullptr){
-        CONSOLE << "Fucking Ptr";
+    if (!sub){
+        LOG_DBG << "Fucking Ptr";
     }
     auto result = new QmlMqttSubscription(sub, this);
     return result;
 }
 
 QmlMqttSubscription::QmlMqttSubscription(QMqttSubscription *sub, QmlMqttClient *client)
-    : m_sub(sub), m_client(client)
 {
-    connect(sub, &QMqttSubscription::messageReceived, this, &QmlMqttSubscription::handleMessage);
-    m_topic = sub->topic();
+    m_client = client;
+    m_sub = sub;
+    if (sub) {
+        connect(m_sub, &QMqttSubscription::messageReceived, this, &QmlMqttSubscription::handleMessage);
+        m_topic = m_sub->topic();
+    } else {
+    }
 }
 
 void QmlMqttSubscription::handleMessage(const QMqttMessage &qmsg)

@@ -21,7 +21,7 @@ Window
         source: getScreenUrl(AppModel.loginStatus)
     }
 
-    function getScreenUrl(id){
+    function getScreenUrl(id) {
         if (id) {
             return SCREEN.QML_MAIN_SCREEN
         } else {

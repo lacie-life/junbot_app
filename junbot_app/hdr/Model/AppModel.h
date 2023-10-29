@@ -4,84 +4,75 @@
 #include <QObject>
 #include <QString>
 #include <QMutex>
-#include "AppEnums.h"
-#include "QMQTTHandler.h"
 
 #define MODEL AppModel::getInstance()
 
 class AppModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int currentScreenID READ currentScreenID WRITE setCurrentScreenID NOTIFY currentScreenIDChanged)
-    Q_PROPERTY(QString robotMess READ robotMess WRITE setRobotMess NOTIFY robotMessChanged)
-    Q_PROPERTY(QString currentHostName READ currentHostName WRITE setCurrentHostName NOTIFY currentHostNameChanged)
-    Q_PROPERTY(QString currentPort READ currentPort WRITE setCurrentPort NOTIFY currentPortChanged)
+    Q_PROPERTY(int      currentScreenID     READ currentScreenID    WRITE setCurrentScreenID    NOTIFY currentScreenIDChanged)
+    Q_PROPERTY(QString  robotMess           READ robotMess          WRITE setRobotMess          NOTIFY robotMessChanged)
+    Q_PROPERTY(QString  hostname            READ hostname           WRITE setHostname           NOTIFY hostnameChanged)
+    Q_PROPERTY(int      port                READ port               WRITE setPort               NOTIFY portChanged)
+    Q_PROPERTY(QString  username            READ userName           WRITE setUsername           NOTIFY usernameChanged)
+    Q_PROPERTY(QString  password            READ password           WRITE setPassword           NOTIFY passwordChanged)
+    Q_PROPERTY(bool     loginStatus         READ loginStatus        WRITE setLoginStatus        NOTIFY loginStatusChanged)
+    Q_PROPERTY(int      connectionState     READ connectionState    WRITE setConnectionState    NOTIFY connectionStateChanged)
 
-    Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY currentUserNameChanged)
-    Q_PROPERTY(QString pass READ currentPass WRITE setPass NOTIFY currentPassChanged)
-
-    Q_PROPERTY(bool loginStatus READ loginStatus WRITE setLoginStatus NOTIFY loginStatusChanged)
 public:
     static AppModel *getInstance();
 
-    int currentScreenID() const;
-    QString robotMess() const;
     QString currentHostName() const;
     QString currentPort() const;
 
-    QString currentPass() const;
-    QString userName() const;
+    int connectionState() const;
+    void setConnectionState(int newConnectionState);
+
+    int currentScreenID() const;
+    void setCurrentScreenID(int newCurrentScreenID);
 
     bool loginStatus() const;
+    void setLoginStatus(bool newLoginStatus);
 
-    void startHomeScreen();
+    QString robotMess() const;
+    void setRobotMess(const QString &newRobotMess);
 
-public slots:
-    void setCurrentScreenID(int currentScreenID);
-    void slotReceiveEvent(int event);
-    void setRobotMess(QString msg);
+    QString password() const;
+    void setPassword(const QString &newPassword);
+
+    QString userName() const;
+    void setUsername(const QString &newUsername);
+
     void setCurrentHostName(QString hostName);
     void setCurrentPort(QString port);
 
-    void setUserName(QString user);
-    void setPass(QString pass);
+    QString hostname() const;
+    void setHostname(const QString &newHostname);
 
-    void setLoginStatus(bool status);
-
-    void LoginRequestCheck(QString user, QString pass);
+    int port() const;
+    void setPort(const int &newPort);
 
 signals:
-    void currentScreenIDChanged(int currentScreenID);
-    void robotMessChanged(QString msg);
-    void currentHostNameChanged(QString hostName);
-    void currentPortChanged(QString port);
-
-    void currentUserNameChanged(QString user);
-    void currentPassChanged(QString pass);
-
-    void loginStatusChanged(bool status);
-
-    void LoginStatus(bool status);
-
+    void connectionStateChanged();
+    void currentScreenIDChanged();
+    void loginStatusChanged();
+    void robotMessChanged();
+    void passwordChanged();
+    void usernameChanged();
+    void hostnameChanged();
+    void portChanged();
 
 private:
     AppModel(QObject* parent = nullptr);
-    AppModel(const AppModel&) = delete;
-    void operator =(const AppModel&) = delete;
 
-    static AppModel* m_instance;
-    static QMutex m_lock;
-
+    int m_connectionState;
     int m_currentScreenID;
-    QString m_mess;
-
-    QString m_userName;
-    QString m_pass;
-
-    bool m_loginStatus = false;
-
-    QMqttHandler *m_handler;
-
+    bool m_loginStatus;
+    QString m_robotMess;
+    QString m_password;
+    QString m_username;
+    QString m_hostname;
+    int m_port;
 };
 
 #endif // APPMODEL_H

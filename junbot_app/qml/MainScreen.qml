@@ -5,9 +5,7 @@ import "Component/Common"
 import QmlCustomItem 1.0
 
 Item {
-
     id: root
-
     MenuBar {
         id: menuBar
         width: 720
@@ -22,7 +20,6 @@ Item {
         height: 1080 - 80
         anchors.top: root.top
         anchors.bottom: menuBar.top
-
         color: CONST.COLOR_INVISIBLE
     }
 
@@ -37,13 +34,10 @@ Item {
         }
     }
 
-    function getScreenUrl(id){
-        QmlHandler.qmlMessage("getScreenUrl " + id)
-        QmlHandler.qmlMessage("getScreenUrl " + ENUMS.HomeScreen + " " + ENUMS.SearchScreen)
-        switch(id){
+    function getScreenUrl(id) {
+        switch (id) {
         case ENUMS.HomeScreen:
             QmlHandler.qmlMessage("Home Screen");
-            QmlHandler.qmlMessage(SCREEN.QML_HOME);
             return SCREEN.QML_HOME
         case ENUMS.ControlScreen:
             QmlHandler.qmlMessage("Control Screen");

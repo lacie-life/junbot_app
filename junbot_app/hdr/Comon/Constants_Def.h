@@ -7,11 +7,11 @@
 #include <QColor>
 #include <QMutex>
 #include <QCoreApplication>
+#include <QDebug>
 
 #ifndef MACRO_DEFINE
 #define MACRO_DEFINE
 
-#define CONSOLE qDebug() << "[" << __FUNCTION__ << "] "
 #define DEF_VAR(type, name, value) Q_PROPERTY(type name READ name NOTIFY dataUpdate) \
     public: type name() { return value; }
 
@@ -33,43 +33,20 @@ class Constants_Def : public QObject
 {
     Q_OBJECT
 
-    static Constants_Def* m_instance;
-    static QMutex m_lock;
-
 signals:
     void dataUpdated();
 
 public:
-    static Constants_Def* instance()
-    {
-        m_lock.lock();
-        if (nullptr == m_instance)
-        {
-            m_instance = new Constants_Def();
-        }
-        m_lock.unlock();
-        return m_instance;
-    }
-
-    static void DestroyInstance()
-    {
-        m_lock.lock();
-        if (nullptr != m_instance)
-        {
-            delete m_instance;
-        }
-        m_instance = nullptr;
-        m_lock.unlock();
+    static Constants_Def* instance() {
+        static Constants_Def self;
+        return &self;
     }
 
 private:
     explicit Constants_Def(QObject* parent = nullptr)
         : QObject{ parent }
     { }
-    ~Constants_Def() {}
-    Constants_Def(const Constants_Def&) = delete;
-    bool operator= (const Constants_Def&) = delete ;
-
+    ~Constants_Def() = default;
 
     // define property
 
