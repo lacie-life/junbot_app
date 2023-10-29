@@ -9,5 +9,5 @@ Text
     font.bold: isBold
     font.pixelSize: fontSize
     text: ""
-    color: "#ffffff"
+    color: CONST.COLOR_DEFAULT_TEXT
 }

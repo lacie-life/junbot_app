@@ -27,9 +27,6 @@ struct RobotNode {
 class QMqttHandler : public QObject
 {
     Q_OBJECT
-
-    static QMqttHandler *m_instance;
-
 public:
     static QMqttHandler *getInstance();
     ~QMqttHandler();
@@ -42,8 +39,8 @@ public:
     RobotNode currentRobotNode() const;
 
 public slots:
-    void onMQTT_Connected();
-    void onMQTT_disconnected();
+    void onMqttConnected();
+    void onMqttDisconnected();
     void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
 
     void mqtt_Publish(RobotNode node, QJsonObject message);
@@ -60,18 +57,15 @@ signals:
 
 public:
     QVector<RobotNode> RobotNodes;
-
     QString device_path;
     QString broker_path;
 
 private:
     QMqttHandler(QObject* parent = nullptr);
-    QMqttHandler(const QMqttHandler&) = delete;
-    void operator =(const QMqttHandler&) = delete;
 
-    QMqttClient *m_client;
-    RobotNode m_current_robot_node;
-    QString m_mqttMessage;
+    QMqttClient     *m_client;
+    RobotNode       m_current_robot_node;
+    QString         m_mqttMessage;
 };
 
 #endif // QMQTT_HANDLER_H

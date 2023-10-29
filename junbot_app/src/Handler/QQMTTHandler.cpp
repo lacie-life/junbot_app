@@ -1,15 +1,12 @@
+#include "AppEnums.h"
 #include "QMQTTHandler.h"
-#include "Constants_Def.h"
-
-QMqttHandler *QMqttHandler::m_instance = nullptr;
+#include "Common.h"
+#include "AppModel.h"
 
 QMqttHandler *QMqttHandler::getInstance()
 {
-    if (nullptr == m_instance)
-    {
-        m_instance = new QMqttHandler();
-    }
-    return m_instance;
+    static QMqttHandler self;
+    return &self;
 }
 
 QMqttHandler::QMqttHandler(QObject* parent)
@@ -49,28 +46,29 @@ void QMqttHandler::connectMQTT(QString brokerName, qint16 port)
 
     m_client->setHostname(brokerName);
     m_client->setPort(port);
-
     m_client->connectToHost();
 
-    connect(m_client, &QMqttClient::connected, this, &QMqttHandler::onMQTT_Connected);
-    connect(m_client, &QMqttClient::disconnected, this, &QMqttHandler::onMQTT_disconnected);
+    connect(m_client, &QMqttClient::connected, this, &QMqttHandler::onMqttConnected);
+    connect(m_client, &QMqttClient::disconnected, this, &QMqttHandler::onMqttDisconnected);
     connect(m_client, &QMqttClient::messageReceived, this, &QMqttHandler::onMQTT_Received);
 }
 
-void QMqttHandler::onMQTT_Connected()
+void QMqttHandler::onMqttConnected()
 {
-    CONSOLE << "Connected to MQTT Broker";
+    LOG_DBG << "Connected to MQTT Broker";
+    MODEL->setConnectionState(static_cast<int>(AppEnums::Connected));
     MQTT_Subcrib(m_current_robot_node);
 }
 
-void QMqttHandler::onMQTT_disconnected()
+void QMqttHandler::onMqttDisconnected()
 {
-    CONSOLE << "Disconnected to MQTT Broker";
+    LOG_DBG << "Disconnected to MQTT Broker";
+    MODEL->setConnectionState(static_cast<int>(AppEnums::Disconnected));
 }
 
 void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic)
 {
-    CONSOLE << "Received message: " << message << " from topic: " << topic.name();
+    LOG_DBG << "Received message: " << message << " from topic: " << topic.name();
 
     QJsonObject msg = QJsonDocument::fromJson(message).object();
 
@@ -116,7 +114,7 @@ void QMqttHandler::pubRun(QString Target1, QString Target2, QString Target3)
 
 void QMqttHandler::MQTT_Subcrib(RobotNode node)
 {
-    CONSOLE << node.current_state_topic;
+    LOG_DBG << node.current_state_topic;
     QMqttTopicFilter filter(node.current_state_topic);
 
     m_client->subscribe(filter);

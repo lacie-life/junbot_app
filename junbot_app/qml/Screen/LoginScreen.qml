@@ -2,14 +2,11 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import QmlCustomItem 1.0
-import "Component/Common"
-
+import "../Component/Common"
 
 Item {
-
     id: root
-
-    Rectangle{
+    Rectangle {
         id: mainLoginScreen
         width: root.width
         height: root.height
@@ -105,8 +102,8 @@ Item {
                     width: buttonLogin.width
                     height: buttonLogin.height
                     onClicked: {
-                        AppModel.setUserName(userName.text)
-                        AppModel.setPass(userPassword.text)
+                        AppModel.userName = userName.text
+                        AppModel.pass = userPassword.text
                         QmlHandler.qmlMessage("LOL")
                         QmlHandler.qmlSendEvent(ENUMS.LoginRequest)
                     }

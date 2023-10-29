@@ -19,7 +19,7 @@ void QMLHandler::qmlSendEvent(int event)
 
 void QMLHandler::qmlMessage(QString msg)
 {
-    qDebug().noquote() << "[QtMsg] " << msg;
+    qDebug().noquote() << "[QtMsg]" << msg;
 }
 
 QMLHandler::QMLHandler()

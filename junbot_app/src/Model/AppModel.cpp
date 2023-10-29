@@ -1,51 +1,49 @@
-#include <QDebug>
-
 #include "AppModel.h"
-#include "Constants_Def.h"
-
-AppModel* AppModel::m_instance = nullptr;
-QMutex AppModel::m_lock;
-
+#include "AppEnums.h"
 
 AppModel *AppModel::getInstance()
 {
-    m_lock.lock();
-    if(nullptr == m_instance)
-    {
-        m_instance = new AppModel();
-    }
-    m_lock.unlock();
-    return m_instance;
+    static AppModel self;
+    return &self;
 }
+
+AppModel::AppModel(QObject *parent)
+    : QObject (parent)
+    , m_currentScreenID { static_cast<int>(AppEnums::HomeScreen) }
+    , m_connectionState { static_cast<int>(AppEnums::Disconnected) }
+    , m_username { "" }
+    , m_password { "" }
+    , m_hostname { "localhost" }
+    , m_port { 1883 }
+{
+    m_robotMess = "";
+}
+
+int AppModel::connectionState() const
+{
+    return m_connectionState;
+}
+
+void AppModel::setConnectionState(int newConnectionState)
+{
+    if (m_connectionState == newConnectionState)
+        return;
+    m_connectionState = newConnectionState;
+    emit connectionStateChanged();
+}
+
 
 int AppModel::currentScreenID() const
 {
     return m_currentScreenID;
 }
 
-QString AppModel::robotMess() const
+void AppModel::setCurrentScreenID(int newCurrentScreenID)
 {
-    return m_mess;
-}
-
-QString AppModel::currentHostName() const
-{
-    return "localhost";
-}
-
-QString AppModel::currentPort() const
-{
-    return "1883";
-}
-
-QString AppModel::currentPass() const
-{
-    return m_pass;
-}
-
-QString AppModel::userName() const
-{
-    return m_userName;
+    if (m_currentScreenID == newCurrentScreenID)
+        return;
+    m_currentScreenID = newCurrentScreenID;
+    emit currentScreenIDChanged();
 }
 
 bool AppModel::loginStatus() const
@@ -53,108 +51,75 @@ bool AppModel::loginStatus() const
     return m_loginStatus;
 }
 
-void AppModel::startHomeScreen()
+void AppModel::setLoginStatus(bool newLoginStatus)
 {
-
-    // m_sensor->MQTT_Subcrib(m_sensor->sensorsNode.at(0));
-
-    RobotNode node;
-    node.ip = "xx.xx.xx.xx";
-    node.name = "robot1";
-    node.current_state_topic = "robot1/state";
-    node.control_topic = "robot1/control";
-
-    m_handler->RobotNodes.push_back(node);
-
-    m_handler->MQTT_Subcrib(m_handler->RobotNodes.at(0));
-}
-
-void AppModel::setCurrentScreenID(int currentScreenID)
-{
-    if (m_currentScreenID == currentScreenID)
+    if (m_loginStatus == newLoginStatus)
         return;
-
-    m_currentScreenID = currentScreenID;
-    CONSOLE << "SCREEN ID: " << currentScreenID;
-    emit currentScreenIDChanged(m_currentScreenID);
+    m_loginStatus = newLoginStatus;
+    emit loginStatusChanged();
 }
 
-void AppModel::slotReceiveEvent(int event)
+QString AppModel::robotMess() const
 {
-    switch (event) {
-    case static_cast<int>(AppEnums::E_SCREEN_t::HomeScreen):
-        CONSOLE <<  "Home Screen";
-        setCurrentScreenID(AppEnums::HomeScreen);
-        startHomeScreen();
-        break;
-    case static_cast<int>(AppEnums::E_SCREEN_t::ControlScreen):
-        CONSOLE << "Control Screen";
-        setCurrentScreenID(AppEnums::ControlScreen);
-        break;
-    case static_cast<int>(AppEnums::E_SCREEN_t::UserScreen):
-        CONSOLE << "User Screen";
-        setCurrentScreenID(AppEnums::UserScreen);
-        break;
-    case static_cast<int>(AppEnums::E_EVENT_t::LoginRequest):
-        CONSOLE << "Login Request Screen";
-        LoginRequestCheck(this->userName(), this->currentPass());
-        break;
-    default:
-        break;
-    }
+    return m_robotMess;
 }
 
-void AppModel::setRobotMess(QString msg)
+void AppModel::setRobotMess(const QString &newRobotMess)
 {
-    m_mess = msg;
-
-    CONSOLE << m_mess;
+    if (m_robotMess == newRobotMess)
+        return;
+    m_robotMess = newRobotMess;
+    emit robotMessChanged();
 }
 
-void AppModel::setCurrentHostName(QString hostName)
+QString AppModel::password() const
 {
-
+    return m_password;
 }
 
-void AppModel::setCurrentPort(QString port)
+void AppModel::setPassword(const QString &newPassword)
 {
-
+    if (m_password == newPassword)
+        return;
+    m_password = newPassword;
+    emit passwordChanged();
 }
 
-void AppModel::setUserName(QString user)
+QString AppModel::userName() const
 {
-    m_userName = user;
+    return m_username;
 }
 
-void AppModel::setPass(QString pass)
+void AppModel::setUsername(const QString &newUsername)
 {
-    m_pass = pass;
+    if (m_username == newUsername)
+        return;
+    m_username = newUsername;
+    emit usernameChanged();
 }
 
-void AppModel::setLoginStatus(bool status)
+QString AppModel::hostname() const
 {
-    m_loginStatus = status;
+    return m_hostname;
 }
 
-void AppModel::LoginRequestCheck(QString user, QString pass)
+void AppModel::setHostname(const QString &newHostname)
 {
-    // Login here
-    CONSOLE << user << " " << pass;
-
-    m_loginStatus = true;
-    emit loginStatusChanged(m_loginStatus);
+    if (m_hostname == newHostname)
+        return;
+    m_hostname = newHostname;
+    emit hostnameChanged();
 }
 
-AppModel::AppModel(QObject *parent)
-    : QObject(parent)
-    , m_currentScreenID {static_cast<int>(AppEnums::HomeScreen)}
+int AppModel::port() const
 {
-    m_handler = QMqttHandler::getInstance();
-    m_handler->loadMQTTSetting(DEFS->DEVICE_PATH());
-    m_handler->initBokerHost(DEFS->BROKER_PATH());
+    return m_port;
+}
 
-    connect(m_handler, &QMqttHandler::mqttMessageChanged, this, &AppModel::setRobotMess);
-//    connect(m_handler, &QMqttHandler::MQTT_Received, this, &AppModel::setRobotMess);
-
-    m_handler->connectMQTT("localhost", 1883);
+void AppModel::setPort(const int &newPort)
+{
+    if (m_port == newPort)
+        return;
+    m_port = newPort;
+    emit portChanged();
 }

@@ -6,9 +6,6 @@
 #include <QMutex>
 #include <QCoreApplication>
 #include <QHash>
-#include <QDebug>
-
-#include "AppEnums.h"
 
 #ifndef SCREEN_DEF_MACROS
 
@@ -31,51 +28,28 @@
 class ScreenDef : public QObject
 {
     Q_OBJECT
-    static ScreenDef* m_instance;
-    static QMutex m_lock;
-
 public:
-    static ScreenDef* getInstance(){
-        m_lock.lock();
-        if(nullptr == m_instance)
-        {
-            m_instance = new ScreenDef();
-        }
-        m_lock.unlock();
-        return m_instance;
-    }
-
-    static void DestroyInstance()
-    {
-        m_lock.lock();
-        if(nullptr != m_instance)
-        {
-            delete m_instance;
-        }
-        m_instance = nullptr;
-        m_lock.unlock();
+    static ScreenDef* getInstance() {
+        static ScreenDef self;
+        return &self;
     }
 
 private:
     ScreenDef(QObject* parent = nullptr)
         : QObject(parent) {}
-    ~ScreenDef() {}
-    ScreenDef(const ScreenDef&) = delete;
-    void operator =(const ScreenDef&) = delete;
+    ~ScreenDef() = default;
 
     // Define screen
     DEF_SCREEN(QML_PREFIX       , "qrc:/qml/")
     DEF_SCREEN(QML_APP          , QML_PREFIX() + "main.qml")
     DEF_SCREEN(QML_MAIN_SCREEN  , QML_PREFIX() + "MainScreen.qml")
-    DEF_SCREEN(QML_LOGIN_SCREEN , QML_PREFIX() + "LoginScreen.qml")
     DEF_SCREEN(QML_TEST         , QML_PREFIX() + "TestScreen.qml")
 
     // detail screen
-    DEF_SCREEN(QML_HOME         , QML_PREFIX() + "Screen/Home/HomeScreen.qml")
-    DEF_SCREEN(QML_SEARCH       , QML_PREFIX() + "Screen/Search/SearchScreen.qml")
-    DEF_SCREEN(QML_MAP          , QML_PREFIX() + "Screen/Map/MapScreen.qml")
-    DEF_SCREEN(QML_CONTROL      , QML_PREFIX() + "Screen/Control/ControlScreen.qml")
-    DEF_SCREEN(QML_USER         , QML_PREFIX() + "Screen/User/UserScreen.qml")
+    DEF_SCREEN(QML_LOGIN_SCREEN , QML_PREFIX() + "Screen/LoginScreen.qml")
+    DEF_SCREEN(QML_HOME         , QML_PREFIX() + "Screen/HomeScreen.qml")
+    DEF_SCREEN(QML_CONTROL      , QML_PREFIX() + "Screen/ControlScreen.qml")
+    DEF_SCREEN(QML_USER         , QML_PREFIX() + "Screen/UserScreen.qml")
 
 
 };
