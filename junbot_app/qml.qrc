@@ -6,7 +6,6 @@
         <file>qml/Component/Common/QRec.qml</file>
         <file>qml/Component/Common/QText.qml</file>
         <file>qml/Component/Common/QTimer.qml</file>
-        <file>qml/Component/QButton.qml</file>
         <file>qml/Component/Common/QSwitch.qml</file>
         <file>qml/Component/MenuBar.qml</file>
         <file>qml/Component/MenuItem.qml</file>
@@ -17,5 +16,8 @@
         <file>qml/Screen/LoginScreen.qml</file>
         <file>qml/Component/Frame.qml</file>
         <file>js/func.js</file>
+        <file>qml/Component/TargetPlaceholder.qml</file>
+        <file>qml/Component/TargetPlaceholderList.qml</file>
+        <file>qml/Component/NodeButton.qml</file>
     </qresource>
 </RCC>

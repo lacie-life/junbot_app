@@ -1,5 +1,6 @@
 #include "AppModel.h"
 #include "AppEnums.h"
+#include "Common.h"
 
 AppModel *AppModel::getInstance()
 {
@@ -17,6 +18,10 @@ AppModel::AppModel(QObject *parent)
     , m_port { 1883 }
 {
     m_robotMess = "";
+    m_listNodes.clear();
+    m_listNodes << "A" << "B" << "C" << "D" << "E" << "F" << "G" << "H" << "I" << "J" << "K" << "L";
+    m_deliveryNodes.clear();
+    m_deliveryNodes << "A" << "B" << "C";
 }
 
 int AppModel::connectionState() const
@@ -122,4 +127,32 @@ void AppModel::setPort(const int &newPort)
         return;
     m_port = newPort;
     emit portChanged();
+}
+
+QStringList AppModel::deliveryNodes() const
+{
+    return m_deliveryNodes;
+}
+
+void AppModel::setDeliveryNodes(const QStringList &newDeliveryNodes)
+{
+    LOG_DBG << "New targets:" << newDeliveryNodes;
+    if (m_deliveryNodes == newDeliveryNodes)
+        return;
+    m_deliveryNodes.clear();
+    m_deliveryNodes = newDeliveryNodes;
+    emit deliveryNodesChanged();
+}
+
+QStringList AppModel::listNodes() const
+{
+    return m_listNodes;
+}
+
+void AppModel::setListNodes(const QStringList &newListNodes)
+{
+    if (m_listNodes == newListNodes)
+        return;
+    m_listNodes = newListNodes;
+    emit listNodesChanged();
 }
