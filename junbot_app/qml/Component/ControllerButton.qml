@@ -54,6 +54,8 @@ Item {
         to: 180
         duration: 250
         running: false
+        easing.type: Easing.OutInBack
+
     }
 
     MouseArea {
