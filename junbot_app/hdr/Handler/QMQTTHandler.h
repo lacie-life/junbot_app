@@ -39,8 +39,8 @@ public:
     RobotNode currentRobotNode() const;
 
 public slots:
-    void onMQTT_Connected();
-    void onMQTT_disconnected();
+    void onMqttConnected();
+    void onMqttDisconnected();
     void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
 
     void mqtt_Publish(RobotNode node, QJsonObject message);

@@ -1,29 +1,59 @@
-import QtQuick 2.0
+import QtQuick 2.15
+import QtGraphicalEffects 1.15
+import "../../js/func.js" as Func
 
-Rectangle {
+Item {
     id: root
     property string iconName: "cancel"
-    radius: 10
-    color: self.isPressed ? "#828282" : self.isHovered ? "#c6c6c6" : "transparent"
+    property double radius: 50
+    property string backgroundColor: "#eaeaea"
+    property string hoveredColor: Func.darker(backgroundColor, 20)
+    property string pressedColor: Func.darker(hoveredColor, 20)
+    property bool rotateOnPress: false
+
+    width: 100
+    height: 100
 
     signal clicked()
     signal pressed()
     signal released()
 
-    width: 125
-    height: 125
-
     QtObject {
         id: self
         property bool isHovered: false
         property bool isPressed: false
-        property double sizeScale: 0.8
+        property double sizeScale: 0.5
+    }
+
+    Rectangle {
+        id: bg
+        anchors.fill: parent
+        radius: root.radius
+        color: self.isPressed ? root.pressedColor : self.isHovered ? root.hoveredColor : root.backgroundColor
+    }
+    DropShadow {
+        anchors.fill: bg
+        horizontalOffset: 4
+        verticalOffset: 4
+        radius: 5
+        color: "#5f5f5f"
+        source: bg
     }
 
     Image {
+        id: icon
         anchors.centerIn: parent
         sourceSize: Qt.size(root.width * self.sizeScale, root.height * self.sizeScale)
         source: "qrc:/res/" + root.iconName + ".png"
+    }
+
+    RotationAnimator {
+        id: rotation_animator
+        target: icon
+        from: 0
+        to: 180
+        duration: 250
+        running: false
     }
 
     MouseArea {
@@ -37,6 +67,9 @@ Rectangle {
         onPressed: {
             self.isPressed = true
             root.pressed()
+            if (root.rotateOnPress) {
+                rotation_animator.start()
+            }
         }
 
         onReleased: {
@@ -44,4 +77,6 @@ Rectangle {
             root.released()
         }
     }
+
+
 }

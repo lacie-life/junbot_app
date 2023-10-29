@@ -16,5 +16,6 @@
         <file>qml/Component/ControllerButton.qml</file>
         <file>qml/Screen/LoginScreen.qml</file>
         <file>qml/Component/Frame.qml</file>
+        <file>js/func.js</file>
     </qresource>
 </RCC>

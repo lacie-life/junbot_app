@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Window 2.12
+import QmlCustomItem 1.0
 import "Component"
 import "Component/Common"
-import QmlCustomItem 1.0
 
 Item {
     id: root
@@ -17,7 +17,7 @@ Item {
     QRec {
         id: mainScreen
         width: 720
-        height: 1080 - 80
+        height: 1000
         anchors.top: root.top
         anchors.bottom: menuBar.top
         color: CONST.COLOR_INVISIBLE

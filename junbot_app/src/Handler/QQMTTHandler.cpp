@@ -1,5 +1,7 @@
+#include "AppEnums.h"
 #include "QMQTTHandler.h"
 #include "Common.h"
+#include "AppModel.h"
 
 QMqttHandler *QMqttHandler::getInstance()
 {
@@ -46,20 +48,22 @@ void QMqttHandler::connectMQTT(QString brokerName, qint16 port)
     m_client->setPort(port);
     m_client->connectToHost();
 
-    connect(m_client, &QMqttClient::connected, this, &QMqttHandler::onMQTT_Connected);
-    connect(m_client, &QMqttClient::disconnected, this, &QMqttHandler::onMQTT_disconnected);
+    connect(m_client, &QMqttClient::connected, this, &QMqttHandler::onMqttConnected);
+    connect(m_client, &QMqttClient::disconnected, this, &QMqttHandler::onMqttDisconnected);
     connect(m_client, &QMqttClient::messageReceived, this, &QMqttHandler::onMQTT_Received);
 }
 
-void QMqttHandler::onMQTT_Connected()
+void QMqttHandler::onMqttConnected()
 {
     LOG_DBG << "Connected to MQTT Broker";
+    MODEL->setConnectionState(static_cast<int>(AppEnums::Connected));
     MQTT_Subcrib(m_current_robot_node);
 }
 
-void QMqttHandler::onMQTT_disconnected()
+void QMqttHandler::onMqttDisconnected()
 {
     LOG_DBG << "Disconnected to MQTT Broker";
+    MODEL->setConnectionState(static_cast<int>(AppEnums::Disconnected));
 }
 
 void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic)

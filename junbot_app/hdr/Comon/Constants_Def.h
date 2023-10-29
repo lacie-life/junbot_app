@@ -21,26 +21,18 @@
 #endif
 
 #define DEFS Constants_Def::instance()
-#define DELETE_DEFS Constants_Def::DestroyInstance()
-
-#ifndef BUILD_DIR
-
-#define BUILD_DIR QCoreApplication::applicationDirPath()
-
-#endif
 
 class Constants_Def : public QObject
 {
     Q_OBJECT
-
-signals:
-    void dataUpdated();
-
 public:
     static Constants_Def* instance() {
         static Constants_Def self;
         return &self;
     }
+
+signals:
+    void dataUpdated();
 
 private:
     explicit Constants_Def(QObject* parent = nullptr)
@@ -57,10 +49,8 @@ private:
 
     // IMAGES
     DEF_CONST(QString, IMAGE_PREFIX , "qrc:/res/")
-    DEF_CONST(QString, SEARCH_IMG   , "search.svg"  )
-    DEF_CONST(QString, HOME_IMG     , "joystick.png"    )
+    DEF_CONST(QString, HOME_IMG     , "joystick.png")
     DEF_CONST(QString, CONTROL_IMG  , "navigation.png" )
-    DEF_CONST(QString, MAP_IMG      , "map.svg"     )
     DEF_CONST(QString, USER_IMG     , "info.png"    )
     DEF_CONST(QString, MAP_MARKER   , IMAGE_PREFIX() + "mapmarker.png")
 
@@ -70,31 +60,16 @@ private:
 
 
     /********************************************** GENERAL **********************************************/
-    DEF_CONST(int, MAX_WIDTH        , 720   )
-    DEF_CONST(int, MAX_HEIGHT       , 1080  )
-    DEF_CONST(int, MENU_BAR_WIDTH   , 80    )
-
-    DEF_CONST(QString   , EMPTY_STRING , ""    )
-
-    // search screen constant
-    DEF_CONST(int, INPUT_BOX_WIDTH      , 1100  )
-    DEF_CONST(int, INPUT_BOX_HEIGHT     , 60    )
-    DEF_CONST(int, INPUT_BOX_TOP_MARGIN , 15    )
+    DEF_CONST(int,      MAX_WIDTH,          720)
+    DEF_CONST(int,      MAX_HEIGHT,         1080)
+    DEF_CONST(int,      MENU_BAR_WIDTH,     80)
 
     // constant color
-    DEF_CONST(QColor, COLOR_SWITCH_OFF      , "#ADADAD")
-    DEF_CONST(QColor, COLOR_SWITCH_ON       , "#00CCD9")
-    DEF_CONST(QColor, COLOR_SWITCH_BTN_NOOD , "#F0F0F0")
-    DEF_CONST(QColor, COLOR_BORDER_DARK     , "#777777")
+    DEF_CONST(QColor,   COLOR_SHADOW,       "#3F3F3F")
+    DEF_CONST(QColor,   COLOR_FRAME_BG,     "#CACACA")
+    DEF_CONST(QColor,   COLOR_DEFAULT_TEXT, "#2A2A2A")
+    DEF_CONST(QString,  COLOR_INVISIBLE,    "transparent")
 
-    DEF_CONST(QColor, COLOR_MENU_BAR        , "#00AF2A")
-    DEF_CONST(QColor, COLOR_MENU_BAR_FOCUS  , "#DDDDDD")
-    DEF_CONST(QColor, COLOR_BACK_GROUND     , COLOR_MENU_BAR_FOCUS())
-
-    DEF_CONST(QString, COLOR_INVISIBLE      , "transparent")
-
-    // QChart define
-    DEF_CONST(int, CHART_DRAW_OFFSET, 10)
 };
 
 
