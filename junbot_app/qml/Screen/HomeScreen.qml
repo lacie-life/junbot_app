@@ -48,10 +48,7 @@ Rectangle {
         borderRadius: 10
         margins: [ 10, 10, 5, 10 ]
 
-        Text {
-            anchors.centerIn: parent
-            text: qsTr("should config to show log inside this box")
-        }
+        // TODO: make a logger to show log in this area
     }
 
     Item {
@@ -119,7 +116,7 @@ Rectangle {
                 height: 200
                 radius: 75
                 rotateOnPress: true
-                backgroundColor: "#FF4F4F"
+                backgroundColor: "#FE5757"
                 hoveredColor: "#FF4040"
                 pressedColor: "#FF2626"
                 iconName: "cancel"
