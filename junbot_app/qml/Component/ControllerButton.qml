@@ -52,9 +52,9 @@ Item {
         target: icon
         from: 0
         to: 180
-        duration: 250
+        duration: 670
         running: false
-        easing.type: Easing.OutInBack
+        easing.type: Easing.OutBack
 
     }
 

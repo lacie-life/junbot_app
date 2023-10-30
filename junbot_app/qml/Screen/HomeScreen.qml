@@ -23,7 +23,7 @@ Rectangle {
             id: connection_label
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 5
-            font.pixelSize: 20
+
             font.bold: true
             text: {
                 switch (AppModel.connectionState) {
@@ -65,7 +65,7 @@ Rectangle {
             ControllerButton {
                 id: left_button
                 anchors.centerIn: parent
-                anchors.horizontalCenterOffset: -width * 5/6
+                anchors.horizontalCenterOffset: -width
                 iconName: "left"
                 onClicked: {
                     QmlHandler.qmlMessage("turn left")
@@ -75,7 +75,7 @@ Rectangle {
             ControllerButton {
                 id: right_button
                 anchors.centerIn: parent
-                anchors.horizontalCenterOffset: width * 5/6
+                anchors.horizontalCenterOffset: width
                 iconName: "right"
                 onClicked: {
                     QmlHandler.qmlMessage("turn right")
@@ -114,7 +114,7 @@ Rectangle {
                 anchors.centerIn: parent
                 width: 200
                 height: 200
-                radius: 75
+                radius: 50
                 rotateOnPress: true
                 backgroundColor: "#FE5757"
                 hoveredColor: "#FF4040"
