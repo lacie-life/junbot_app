@@ -47,16 +47,15 @@ Item {
         source: "qrc:/res/" + root.iconName + ".png"
     }
 
-    RotationAnimator {
-        id: rotation_animator
-        target: icon
-        from: 0
-        to: 180
-        duration: 670
-        running: false
-        easing.type: Easing.OutBack
-
-    }
+//    RotationAnimator {
+//        id: rotation_animator
+//        target: icon
+//        from: 0
+//        to: 180
+//        duration: 670
+//        running: false
+//        easing.type: Easing.OutBack
+//    }
 
     MouseArea {
         anchors.fill: parent
@@ -69,9 +68,9 @@ Item {
         onPressed: {
             self.isPressed = true
             root.pressed()
-            if (root.rotateOnPress) {
-                rotation_animator.start()
-            }
+//            if (root.rotateOnPress) {
+//                rotation_animator.start()
+//            }
         }
 
         onReleased: {

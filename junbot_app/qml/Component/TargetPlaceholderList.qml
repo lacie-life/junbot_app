@@ -7,7 +7,7 @@ Item {
     // public for others
     readonly property var targets: [self.item1, self.item2, self.item3]
 
-    signal requestRemoveItem(item: string)
+    signal requestRemoveItem(string item)
 
     QtObject {
         id: self
