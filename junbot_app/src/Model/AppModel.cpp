@@ -1,6 +1,5 @@
 #include "AppModel.h"
 #include "AppEnums.h"
-#include "Common.h"
 
 AppModel *AppModel::getInstance()
 {
@@ -18,10 +17,26 @@ AppModel::AppModel(QObject *parent)
     , m_port { 1883 }
 {
     m_robotMess = "";
+    // Create default available nodes
     m_listNodes.clear();
-    m_listNodes << "A" << "B" << "C" << "D" << "E" << "F" << "G" << "H" << "I" << "J" << "K" << "L";
+    m_listNodes << QLatin1String("A")
+                << QLatin1String("B")
+                << QLatin1String("C")
+                << QLatin1String("D")
+                << QLatin1String("E")
+                << QLatin1String("F")
+                << QLatin1String("G")
+                << QLatin1String("H")
+                << QLatin1String("I")
+                << QLatin1String("J")
+                << QLatin1String("K")
+                << QLatin1String("L");
+
+    // Create default target nodes
     m_deliveryNodes.clear();
-    m_deliveryNodes << "A" << "B" << "C";
+    m_deliveryNodes << QString()
+                    << QString()
+                    << QString();
 }
 
 int AppModel::connectionState() const
@@ -136,7 +151,6 @@ QStringList AppModel::deliveryNodes() const
 
 void AppModel::setDeliveryNodes(const QStringList &newDeliveryNodes)
 {
-    LOG_DBG << "New targets:" << newDeliveryNodes;
     if (m_deliveryNodes == newDeliveryNodes)
         return;
     m_deliveryNodes.clear();
