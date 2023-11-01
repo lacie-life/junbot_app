@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 2.0
 import "../../js/func.js" as Func
 import "../Component"
 import "../Component/Common"
