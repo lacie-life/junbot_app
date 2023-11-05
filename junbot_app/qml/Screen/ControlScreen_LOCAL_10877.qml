@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import "../../js/func.js" as Func
-import "../Component/Controller"
+import "../Component"
 import "../Component/Common"
 
 Item {
@@ -57,7 +57,6 @@ Item {
 
         GridView {
             id: grid
-            readonly property int cols: Math.floor(width / cellWidth)
             anchors.fill: parent
             anchors.margins: 10
             model: AppModel.listNodes
@@ -85,27 +84,6 @@ Item {
                 for (let j = 0; j < AppModel.deliveryNodes.length; j++) {
                     if (AppModel.deliveryNodes[j] !== "" && AppModel.deliveryNodes[j] === data) {
                         grid.itemAtIndex(i).activated = true
-                    }
-                }
-            }
-        }
-
-
-        Connections {
-            target: target_list
-            function onRequestRemoveItem(item) {
-                for (var idx = 0; idx < grid.count; idx++) {
-                    // calculate index_x, index_y from
-                    let x_index = idx % grid.cols
-                    let y_index = Math.floor(idx / grid.cols)
-
-                    // calculate center position of item with index_x and index_y
-                    let x = (x_index * grid.cellWidth) + grid.cellWidth / 2
-                    let y = (y_index * grid.cellHeight) + grid.cellHeight / 2
-
-                    // get item have that center and check its data
-                    if (grid.itemAt(x, y).nodeData === item) {
-                        grid.itemAt(x, y).activated = false
                     }
                 }
             }

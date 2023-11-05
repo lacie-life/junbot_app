@@ -1,6 +1,6 @@
-import QtQuick 2.12
+import QtQuick 2.0
 import "../../js/func.js" as Func
-import "../Component/Controller"
+import "../Component"
 import "../Component/Common"
 
 Item {
@@ -36,16 +36,8 @@ Item {
             id: target_list
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 25
-            onRequestRemoveItem: {
-                for (var i = 0; i < grid.count; i++) {
-                    if (grid.itemAtIndex(i).nodeData === item) {
-                        grid.itemAtIndex(i).activated = false
-                    }
-                }
-            }
         }
     }
-
 
     Frame {
         id: node_grid
@@ -57,7 +49,6 @@ Item {
 
         GridView {
             id: grid
-            readonly property int cols: Math.floor(width / cellWidth)
             anchors.fill: parent
             anchors.margins: 10
             model: AppModel.listNodes
@@ -90,22 +81,12 @@ Item {
             }
         }
 
-
         Connections {
             target: target_list
             function onRequestRemoveItem(item) {
-                for (var idx = 0; idx < grid.count; idx++) {
-                    // calculate index_x, index_y from
-                    let x_index = idx % grid.cols
-                    let y_index = Math.floor(idx / grid.cols)
-
-                    // calculate center position of item with index_x and index_y
-                    let x = (x_index * grid.cellWidth) + grid.cellWidth / 2
-                    let y = (y_index * grid.cellHeight) + grid.cellHeight / 2
-
-                    // get item have that center and check its data
-                    if (grid.itemAt(x, y).nodeData === item) {
-                        grid.itemAt(x, y).activated = false
+                for (var i = 0; i < grid.count; i++) {
+                    if (grid.itemAtIndex(i).nodeData === item) {
+                        grid.itemAtIndex(i).activated = false
                     }
                 }
             }
@@ -137,7 +118,6 @@ Item {
             onPressed: parent.pressed = true
             onReleased: parent.pressed = false
             onClicked: {
-                QMqttHandler.pubRun(AppModel.deliveryNodes[0], AppModel.deliveryNodes[1], AppModel.deliveryNodes[2]);
                 console.warn("Do something in CPP, use the MODEL->deliveryNodes() to get list targets:", AppModel.deliveryNodes)
             }
         }

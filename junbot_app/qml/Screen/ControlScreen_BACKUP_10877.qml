@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import "../../js/func.js" as Func
-import "../Component/Controller"
+import "../Component"
 import "../Component/Common"
 
 Item {
@@ -89,7 +89,8 @@ Item {
                 }
             }
         }
-
+<<<<<<< HEAD
+=======
 
         Connections {
             target: target_list
@@ -110,6 +111,7 @@ Item {
                 }
             }
         }
+>>>>>>> 3bf404fdebe3294c26fbe113cd4be5a56e1b7a75
     }
 
     Frame {
