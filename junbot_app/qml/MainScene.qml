@@ -31,8 +31,8 @@ Item {
             return SCREEN.QML_HOME
         case ENUMS.ControlScreen:
             return SCREEN.QML_CONTROL
-        case ENUMS.UserScreen:
-            return SCREEN.QML_USER
+        case ENUMS.InfoScreen:
+            return SCREEN.QML_INFO
         default:
             return ""
         }

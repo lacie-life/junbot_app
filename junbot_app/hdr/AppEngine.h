@@ -25,7 +25,8 @@ private:
     void initMQTT();
     void initConnection();
     void loginAuthenication();
-    void handleLoginResponse(const QByteArray &message);
+    void handleLoginResponse(const QByteArray& message);
+    void processStateResponse(const QByteArray& message);
 
     QQmlContext *m_rootContext;
     QQmlApplicationEngine m_engine;

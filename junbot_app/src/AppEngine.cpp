@@ -7,6 +7,7 @@
 #include "QMLHandler.h"
 #include "QmlMQTTClient.h"
 #include "QMQTTHandler.h"
+#include "RobotModel.h"
 
 AppEngine::AppEngine(QObject *parent)
     : QObject(parent)
@@ -30,11 +31,12 @@ void AppEngine::initEngine()
     qmlRegisterUncreatableType<QmlMqttSubscription>("MqttClient", 1, 0, "MqttSubscription", QLatin1String("Subscriptions are read-only"));
 
     // set context properties
-    m_rootContext->setContextProperty("QmlHandler",     QML_HANDLER);
-    m_rootContext->setContextProperty("CONST",          DEFS);
-    m_rootContext->setContextProperty("SCREEN",         SCR_DEF);
-    m_rootContext->setContextProperty("AppModel",       MODEL);
-    m_rootContext->setContextProperty("QMqttHandler",   QMQTT_HANDLER);
+    m_rootContext->setContextProperty("QmlHandler",     QMLHandler::getInstance());
+    m_rootContext->setContextProperty("CONST",          Constants_Def::getInstance());
+    m_rootContext->setContextProperty("SCREEN",         ScreenDef::getInstance());
+    m_rootContext->setContextProperty("AppModel",       AppModel::getInstance());
+    m_rootContext->setContextProperty("QMqttHandler",   QMqttHandler::getInstance());
+    m_rootContext->setContextProperty("RobotModel",     RobotModel::getInstance());
 
     // init MQTT
     initMQTT();
@@ -55,6 +57,8 @@ void AppEngine::processMqttMessage(const QByteArray &message, const QString &top
     LOG_DBG << "Process message:" << message << "in topic:" << topicName;
     if (topicName == "robot1/login_userInforesponse") {
         handleLoginResponse(message);
+    } else if (topicName == "robot1/state") {
+        processStateResponse(message);
     }
 }
 
@@ -71,7 +75,7 @@ void AppEngine::handleQmlEvent(int eventID)
         MODEL->setCurrentScreenID(AppEnums::ControlScreen);
         break;
     case AppEnums::E_EVENT_t::UserClickInfo:
-        MODEL->setCurrentScreenID(AppEnums::UserScreen);
+        MODEL->setCurrentScreenID(AppEnums::InfoScreen);
         break;
     case AppEnums::E_EVENT_t::LoginRequest:
         loginAuthenication();
@@ -84,8 +88,8 @@ void AppEngine::handleQmlEvent(int eventID)
 void AppEngine::initMQTT()
 {
     m_handler = QMqttHandler::getInstance();
-    m_handler->loadMQTTSetting(DEFS->DEVICE_PATH());
-    m_handler->initBokerHost(DEFS->BROKER_PATH());
+    m_handler->loadMQTTSetting(Constants_Def::getInstance()->DEVICE_PATH());
+    m_handler->initBokerHost(Constants_Def::getInstance()->BROKER_PATH());
 
     connect(m_handler, &QMqttHandler::mqttMessageChanged, MODEL, &AppModel::setRobotMess);
     connect(m_handler, &QMqttHandler::mqttConnected, this, &AppEngine::handleMqttConnected);
@@ -129,10 +133,30 @@ void AppEngine::handleLoginResponse(const QByteArray &message)
     if (response == "success") {
         MODEL->setLoginStatus(true);
         initConnection();
+        MODEL->setCurrentScreenID(AppEnums::E_SCREEN_t::HomeScreen);
     } else {
         MODEL->setLoginStatus(false);
         emit MODEL->notifyLoginFail();
     }
+}
+
+void AppEngine::processStateResponse(const QByteArray &message)
+{
+    QJsonDocument msgData = QJsonDocument::fromJson(message);
+    QJsonObject obj = msgData.object();
+    int battery = obj.value("battery").toInt();
+    int battStt = obj.value("battery_state").toInt();
+    int ctrlStt = obj.value("is_controlling_state").toInt();
+    int mssnStt = obj.value("is_mission_state").toInt();
+    int sensStt = obj.value("sensor_state").toInt();
+    QString time = obj.value("time").toString();
+
+    RobotModel::getInstance()->setBattery(battery);
+    RobotModel::getInstance()->setBatteryState(battStt);
+    RobotModel::getInstance()->setControlState(ctrlStt);
+    RobotModel::getInstance()->setMissionState(mssnStt);
+    RobotModel::getInstance()->setSensorState(sensStt);
+    RobotModel::getInstance()->setTime(time);
 }
 
 

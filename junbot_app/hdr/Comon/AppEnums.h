@@ -10,9 +10,10 @@ class AppEnums
 public:
     enum E_SCREEN_t
     {
+        InvalidScreen = 0,
         HomeScreen,
         ControlScreen,
-        UserScreen,
+        InfoScreen,
     };
     Q_ENUM(E_SCREEN_t)
 
