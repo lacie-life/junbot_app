@@ -4,11 +4,10 @@
 #include <QObject>
 
 // TODO: Add target screen
-class AppEnums : public QObject
+class AppEnums
 {
-    Q_OBJECT
+    Q_GADGET
 public:
-
     enum E_SCREEN_t
     {
         HomeScreen = 0,
@@ -32,8 +31,6 @@ public:
         Connected,
     };
     Q_ENUM(ConnectState)
-
-signals:
 
 };
 

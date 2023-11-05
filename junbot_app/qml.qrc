@@ -1,23 +1,27 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/MainScreen.qml</file>
+        <file>qml/MainScene.qml</file>
         <file>qml/Component/Common/QImage.qml</file>
         <file>qml/Component/Common/QRec.qml</file>
         <file>qml/Component/Common/QText.qml</file>
         <file>qml/Component/Common/QTimer.qml</file>
         <file>qml/Component/Common/QSwitch.qml</file>
-        <file>qml/Component/MenuBar.qml</file>
-        <file>qml/Component/MenuItem.qml</file>
+        <file>qml/Component/Common/MenuBar.qml</file>
+        <file>qml/Component/Common/MenuItem.qml</file>
         <file>qml/Screen/HomeScreen.qml</file>
         <file>qml/Screen/ControlScreen.qml</file>
         <file>qml/Screen/UserScreen.qml</file>
-        <file>qml/Component/ControllerButton.qml</file>
-        <file>qml/Screen/LoginScreen.qml</file>
-        <file>qml/Component/Frame.qml</file>
+        <file>qml/Component/Home/ControllerButton.qml</file>
+        <file>qml/LoginScene.qml</file>
+        <file>qml/Component/Common/Frame.qml</file>
         <file>js/func.js</file>
-        <file>qml/Component/TargetPlaceholder.qml</file>
-        <file>qml/Component/TargetPlaceholderList.qml</file>
-        <file>qml/Component/NodeButton.qml</file>
+        <file>qml/Component/Controller/TargetPlaceholder.qml</file>
+        <file>qml/Component/Controller/TargetPlaceholderList.qml</file>
+        <file>qml/Component/Controller/NodeButton.qml</file>
+        <file>qml/Component/Login/LoginInput.qml</file>
+        <file>qml/Component/Login/LoginButton.qml</file>
+        <file>qml/Component/Login/LoginLogo.qml</file>
+        <file>qml/Component/Login/LoginBackground.qml</file>
     </qresource>
 </RCC>

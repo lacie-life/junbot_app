@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.1
 
 import MqttClient 1.0
 import QmlCustomItem 1.0
-import "../Component"
+import "../Component/Home"
 import "../Component/Common"
 import "../../js/func.js" as Func
 

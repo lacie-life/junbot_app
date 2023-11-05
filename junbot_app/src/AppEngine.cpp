@@ -102,6 +102,11 @@ void AppEngine::loginAuthenication()
     LOG_DBG << "USER: " << MODEL->userName();
     LOG_DBG << "PASS: " << MODEL->password();
 
+    QJsonObject loginData;
+    loginData.insert("username", MODEL->userName());
+    loginData.insert("password", MODEL->password());
+    LOG_DBG << "Login Data:" << QJsonDocument(loginData).toJson(QJsonDocument::Compact);
+
     MODEL->setLoginStatus(true);
 }
 

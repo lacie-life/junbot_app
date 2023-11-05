@@ -9,10 +9,6 @@
 class AppEngine : public QObject
 {
     Q_OBJECT
-    QQmlContext *m_rootContext;
-    QQmlApplicationEngine m_engine;
-    QMqttHandler *m_handler;
-
 public:
     explicit AppEngine(QObject *parent = nullptr);
     ~AppEngine();
@@ -28,7 +24,10 @@ private:
     void initConnection();
     void loginAuthenication();
 
-signals:
+    QQmlContext *m_rootContext;
+    QQmlApplicationEngine m_engine;
+    QMqttHandler *m_handler;
+
 
 };
 

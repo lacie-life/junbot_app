@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import QmlCustomItem 1.0
-import "Common"
 
 QRec {
     id: root
@@ -10,7 +9,7 @@ QRec {
 
     QtObject {
         id: self
-        property var icons: [CONST.HOME_IMG, CONST.CONTROL_IMG, CONST.USER_IMG]
+        property var icons: [CONST.HOME_IMG, CONST.CONTROL_IMG, CONST.INFO_IMG]
         property var eventIDs: [ENUMS.UserClickHome, ENUMS.UserClickControl, ENUMS.UserClickAccount]
 
         function getIcon(index, isDark) {

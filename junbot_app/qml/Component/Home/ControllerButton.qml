@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.12
-import "../../js/func.js" as Func
+import "../../../js/func.js" as Func
 
 Item {
     id: root
@@ -47,16 +47,6 @@ Item {
         source: "qrc:/res/" + root.iconName + ".png"
     }
 
-//    RotationAnimator {
-//        id: rotation_animator
-//        target: icon
-//        from: 0
-//        to: 180
-//        duration: 670
-//        running: false
-//        easing.type: Easing.OutBack
-//    }
-
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -68,9 +58,6 @@ Item {
         onPressed: {
             self.isPressed = true
             root.pressed()
-//            if (root.rotateOnPress) {
-//                rotation_animator.start()
-//            }
         }
 
         onReleased: {

@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import "../../js/func.js" as Func
-import "../Component"
+import "../Component/Controller"
 import "../Component/Common"
 
 Item {
