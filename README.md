@@ -11,8 +11,18 @@ git checkout <version of Qt> # version of Qt: v5.12.5
 sudo apt-get install qtbase5-private-dev
 qmake => make => make install
 ```
+2. Tools usage
 
-2. Run
+- Install mosquitto and mosquitto-client by following this [link](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-ubuntu-18-04)
+- Using mosquitto for sub topic in publishing.py (option)
+- Config user/pass (option)
+- Install paho-mqtt for run publishing.py
+```
+pip install paho-mqtt
+```
+- Default mqtt broker will be localhost:1883
+
+3. Run
 
 
 # TODO:
