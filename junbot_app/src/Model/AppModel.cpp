@@ -34,6 +34,7 @@ AppModel::AppModel(QObject *parent)
 
     // Create default target nodes
     m_deliveryNodes.clear();
+
     m_deliveryNodes << QString()
                     << QString()
                     << QString();
