@@ -17,12 +17,15 @@ public:
     void startApplication();
 
 public slots:
-    void handleEvent(int eventID);
+    void handleMqttConnected();
+    void processMqttMessage(const QByteArray &message, const QString& topicName);
+    void handleQmlEvent(int eventID);
 
 private:
     void initMQTT();
     void initConnection();
     void loginAuthenication();
+    void handleLoginResponse(const QByteArray &message);
 
     QQmlContext *m_rootContext;
     QQmlApplicationEngine m_engine;
