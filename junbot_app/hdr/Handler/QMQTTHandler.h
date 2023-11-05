@@ -35,25 +35,30 @@ public:
     int initBokerHost(QString path);
     void connectMQTT(QString brokerName, qint16 port);
 
-    QString mqttMessage() const;
+    QString mqttMessage() const;  // why?
     RobotNode currentRobotNode() const;
 
 public slots:
     void onMqttConnected();
     void onMqttDisconnected();
-    void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
+    void onMqttMessageReceived(const QByteArray &message, const QMqttTopicName &topic);
 
-    void mqtt_Publish(RobotNode node, QJsonObject message);
-    void MQTT_Subcrib(RobotNode node);
+    void mqttPublish(const RobotNode &node, const QJsonObject &message);
+    void mqttPublish(const QString& topic, const QJsonObject& message);
+
+    void mqttSubcribe(RobotNode node);
+    void mqttSubcribe(const QString& topic);
+
     void pub(QString nod, QString message);
     void pubRun(QString Target1, QString Target2, QString Target3);
 
-    void setMqttMessage(QJsonObject &msg);
+    void setMqttMessage(QJsonObject &msg);  // why?
     void setCurrentRobotNode(RobotNode node);
 
 signals:
-    void MQTT_Received(QString msg);
-    void mqttMessageChanged(QString msg);
+    void mqttConnected();
+    void mqttMessageReceived(const QByteArray& message, const QString& topicName);  // <- this signal
+    void mqttMessageChanged(QString msg);  // why?
 
 public:
     QVector<RobotNode> RobotNodes;
@@ -65,7 +70,7 @@ private:
 
     QMqttClient     *m_client;
     RobotNode       m_current_robot_node;
-    QString         m_mqttMessage;
+    QString         m_mqttMessage;  // why? Just emit the signal and handle in AppEngine.
 };
 
 #endif // QMQTT_HANDLER_H

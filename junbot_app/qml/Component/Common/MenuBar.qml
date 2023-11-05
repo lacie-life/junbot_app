@@ -10,7 +10,7 @@ QRec {
     QtObject {
         id: self
         property var icons: [CONST.HOME_IMG, CONST.CONTROL_IMG, CONST.INFO_IMG]
-        property var eventIDs: [ENUMS.UserClickHome, ENUMS.UserClickControl, ENUMS.UserClickAccount]
+        property var eventIDs: [ENUMS.UserClickHome, ENUMS.UserClickControl, ENUMS.UserClickInfo]
 
         function getIcon(index, isDark) {
             return (isDark ? "dark/" : "light/") + icons[index]
