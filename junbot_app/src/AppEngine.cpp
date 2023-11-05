@@ -80,6 +80,9 @@ void AppEngine::handleQmlEvent(int eventID)
     case AppEnums::E_EVENT_t::LoginRequest:
         loginAuthenication();
         break;
+    case AppEnums::E_EVENT_t::SendDeliveryNodes:
+        sendDeliveryNodes();
+        break;
     default:
         break;
     }
@@ -123,6 +126,36 @@ void AppEngine::loginAuthenication()
     loginData.insert("username", MODEL->userName());
     loginData.insert("password", MODEL->password());
     m_handler->mqttPublish("robot1/login_request", loginData);
+}
+
+void AppEngine::sendDeliveryNodes()
+{
+    LOG_DBG << "Current data:" << MODEL->deliveryNodes();
+    QStringList listNodes;
+    for (const QString& node : MODEL->deliveryNodes()) {
+        if (!node.isEmpty()) {
+            listNodes.append(node);
+        }
+    }
+    if (listNodes.isEmpty()) {
+        LOG_WRN << "Empty list!";
+        return;
+    }
+
+    QJsonObject obj;
+    QJsonArray nodeArr;
+    for (const QString& node : listNodes) {
+        QJsonObject nodeObj;
+        nodeObj.insert("name", node);
+        nodeObj.insert("x", 0);
+        nodeObj.insert("y", 0);
+        nodeObj.insert("z", 0);
+        nodeArr.append(nodeObj);
+    }
+    obj.insert("nodes", nodeArr);
+
+    LOG_DBG << "Deliver: " << QJsonDocument(obj).toJson(QJsonDocument::Compact);
+    m_handler->mqttPublish("robot1/deliver", obj);
 }
 
 void AppEngine::handleLoginResponse(const QByteArray &message)
