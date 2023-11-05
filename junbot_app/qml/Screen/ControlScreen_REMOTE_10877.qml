@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.0
 import "../../js/func.js" as Func
 import "../Component"
 import "../Component/Common"
@@ -36,16 +36,8 @@ Item {
             id: target_list
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 25
-            onRequestRemoveItem: {
-                for (var i = 0; i < grid.count; i++) {
-                    if (grid.itemAtIndex(i).nodeData === item) {
-                        grid.itemAtIndex(i).activated = false
-                    }
-                }
-            }
         }
     }
-
 
     Frame {
         id: node_grid
@@ -89,7 +81,6 @@ Item {
                 }
             }
         }
-
 
         Connections {
             target: target_list
@@ -137,7 +128,6 @@ Item {
             onPressed: parent.pressed = true
             onReleased: parent.pressed = false
             onClicked: {
-                QMqttHandler.pubRun(AppModel.deliveryNodes[0], AppModel.deliveryNodes[1], AppModel.deliveryNodes[2]);
                 console.warn("Do something in CPP, use the MODEL->deliveryNodes() to get list targets:", AppModel.deliveryNodes)
             }
         }
