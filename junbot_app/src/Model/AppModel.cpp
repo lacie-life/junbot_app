@@ -9,7 +9,7 @@ AppModel *AppModel::getInstance()
 
 AppModel::AppModel(QObject *parent)
     : QObject (parent)
-    , m_currentScreenID { static_cast<int>(AppEnums::HomeScreen) }
+    , m_currentScreenID { static_cast<int>(AppEnums::InvalidScreen) }
     , m_connectionState { static_cast<int>(AppEnums::Disconnected) }
     , m_username { "" }
     , m_password { "" }

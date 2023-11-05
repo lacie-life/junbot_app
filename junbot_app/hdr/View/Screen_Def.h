@@ -49,7 +49,7 @@ private:
     DEF_SCREEN(QML_LOGIN_SCREEN , QML_PREFIX() + "Screen/LoginScreen.qml")
     DEF_SCREEN(QML_HOME         , QML_PREFIX() + "Screen/HomeScreen.qml")
     DEF_SCREEN(QML_CONTROL      , QML_PREFIX() + "Screen/ControlScreen.qml")
-    DEF_SCREEN(QML_USER         , QML_PREFIX() + "Screen/UserScreen.qml")
+    DEF_SCREEN(QML_INFO         , QML_PREFIX() + "Screen/InfoScreen.qml")
 
 
 };

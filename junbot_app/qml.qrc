@@ -11,7 +11,7 @@
         <file>qml/Component/Common/MenuItem.qml</file>
         <file>qml/Screen/HomeScreen.qml</file>
         <file>qml/Screen/ControlScreen.qml</file>
-        <file>qml/Screen/UserScreen.qml</file>
+        <file>qml/Screen/InfoScreen.qml</file>
         <file>qml/Component/Home/ControllerButton.qml</file>
         <file>qml/LoginScene.qml</file>
         <file>qml/Component/Common/Frame.qml</file>
