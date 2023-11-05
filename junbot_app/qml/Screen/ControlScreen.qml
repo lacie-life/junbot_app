@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QmlCustomItem 1.0
 import "../../js/func.js" as Func
 import "../Component/Controller"
 import "../Component/Common"
@@ -138,7 +139,8 @@ Item {
             onReleased: parent.pressed = false
             onClicked: {
                 QMqttHandler.pubRun(AppModel.deliveryNodes[0], AppModel.deliveryNodes[1], AppModel.deliveryNodes[2]);
-                console.warn("Do something in CPP, use the MODEL->deliveryNodes() to get list targets:", AppModel.deliveryNodes)
+//                console.warn("Do something in CPP, use the MODEL->deliveryNodes() to get list targets:", AppModel.deliveryNodes)
+                QmlHandler.qmlSendEvent(ENUMS.SendDeliveryNodes)
             }
         }
     }

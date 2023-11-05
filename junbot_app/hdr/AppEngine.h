@@ -25,6 +25,7 @@ private:
     void initMQTT();
     void initConnection();
     void loginAuthenication();
+    void sendDeliveryNodes();
     void handleLoginResponse(const QByteArray& message);
     void processStateResponse(const QByteArray& message);
 

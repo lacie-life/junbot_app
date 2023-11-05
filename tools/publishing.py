@@ -57,24 +57,26 @@ msg_login_userInforesponse = {
 }
 
 msg_deliver = {
-    "target": {
-        "name": "A",
-        "x": 0,
-        "y": 0,
-        "z": 0
+  "nodes": [
+    {
+      "name": "A",
+      "x": 0,
+      "y": 0,
+      "z": 0
     },
-    "target": {
-        "name": "B",
-        "x": 1,
-        "y": 1,
-        "z": 1
+    {
+      "name": "B",
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
-    "target": {
-        "name": "C",
-        "x": 2,
-        "y": 2,
-        "z": 2
+    {
+      "name": "C",
+      "x": 2,
+      "y": 2,
+      "z": 2
     }
+  ]
 }
 
 msg_deliver_response = {
