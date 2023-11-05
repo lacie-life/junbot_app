@@ -14,19 +14,13 @@ Item {
         anchors.bottom: root.bottom
     }
 
-    QRec {
-        id: mainScreen
+    Loader {
+        id: screenLoader
+        visible: true
         width: 720
         height: 1000
         anchors.top: root.top
         anchors.bottom: menuBar.top
-        color: CONST.COLOR_INVISIBLE
-    }
-
-    Loader {
-        id: screenLoader
-        visible: true
-        anchors.fill: mainScreen
         source: getScreenUrl(AppModel.currentScreenID)
     }
 
@@ -38,7 +32,6 @@ Item {
         case ENUMS.ControlScreen:
             QmlHandler.qmlMessage("Control Screen");
             return SCREEN.QML_CONTROL
-//            return "qrc:/qml/Screen/ControlScreen_Old.qml"
         case ENUMS.UserScreen:
             QmlHandler.qmlMessage("User Screen");
             return SCREEN.QML_USER

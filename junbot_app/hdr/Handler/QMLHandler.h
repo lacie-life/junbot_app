@@ -10,8 +10,6 @@
 class QMLHandler : public QObject
 {
     Q_OBJECT
-    static QMLHandler* m_instance;
-
 public:
     static QMLHandler *getInstance();
 

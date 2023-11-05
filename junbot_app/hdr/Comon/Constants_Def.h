@@ -50,9 +50,10 @@ private:
     // IMAGES
     DEF_CONST(QString, IMAGE_PREFIX , "qrc:/res/")
     DEF_CONST(QString, HOME_IMG     , "joystick.png")
-    DEF_CONST(QString, CONTROL_IMG  , "navigation.png" )
-    DEF_CONST(QString, USER_IMG     , "info.png"    )
-    DEF_CONST(QString, MAP_MARKER   , IMAGE_PREFIX() + "mapmarker.png")
+    DEF_CONST(QString, CONTROL_IMG  , "navigation.png")
+    DEF_CONST(QString, INFO_IMG     , "info.png")
+    DEF_CONST(QString, USER_IMG     , "user_128x128.png")
+    DEF_CONST(QString, PASSWD_IMG   , "padlock_128x128.png")
 
     // Config
     DEF_CONST(QString, BROKER_PATH, ":/config/config/broker.json")
