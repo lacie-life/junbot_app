@@ -7,7 +7,7 @@
 1. QMQTT
 ```
 git clone git://code.qt.io/qt/qtmqtt.git
-git checkout <version of Qt> # version of Qt: v5.12.5
+git checkout <version of Qt> # version of Qt: v5.15.2
 sudo apt-get install qtbase5-private-dev
 qmake => make => make install
 ```
