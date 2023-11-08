@@ -33,7 +33,6 @@ private:
     QQmlApplicationEngine m_engine;
     QMqttHandler *m_handler;
 
-
 };
 
 #endif // APPENGINE_H

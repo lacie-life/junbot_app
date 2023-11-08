@@ -68,6 +68,8 @@ else()
                 ${QT_RESOURCES}
                 hdr/Comon/Common.h
                 hdr/Model/RobotModel.h src/Model/RobotModel.cpp
+                src/common/Common.cpp
+
         )
     endif()
 endif()

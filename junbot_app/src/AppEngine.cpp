@@ -119,8 +119,8 @@ void AppEngine::initConnection()
 
 void AppEngine::loginAuthenication()
 {
-    LOG_DBG << "USER: " << MODEL->userName();
-    LOG_DBG << "PASS: " << MODEL->password();
+    LOG_DBG << "Username: " << MODEL->userName();
+    LOG_DBG << "Password: " << MODEL->password();
 
     QJsonObject loginData;
     loginData.insert("username", MODEL->userName());
@@ -147,9 +147,9 @@ void AppEngine::sendDeliveryNodes()
     for (const QString& node : listNodes) {
         QJsonObject nodeObj;
         nodeObj.insert("name", node);
-        nodeObj.insert("x", 0);
-        nodeObj.insert("y", 0);
-        nodeObj.insert("z", 0);
+        nodeObj.insert("x", nodeMaps.value(node).x);
+        nodeObj.insert("y", nodeMaps.value(node).y);
+        nodeObj.insert("z", nodeMaps.value(node).z);
         nodeArr.append(nodeObj);
     }
     obj.insert("nodes", nodeArr);
