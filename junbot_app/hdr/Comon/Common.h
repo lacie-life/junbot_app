@@ -11,9 +11,9 @@
 #define LOG_ERR qCritical().nospace().noquote() << "[ERROR][" << __PRETTY_FUNCTION__ << "] "
 
 struct NodeLocation {
-    int x;
-    int y;
-    int z;
+    float x;
+    float y;
+    float z;
 };
 
 extern const QMap<QString, NodeLocation> nodeMaps;
