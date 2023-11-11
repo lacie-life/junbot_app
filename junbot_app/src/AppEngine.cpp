@@ -17,7 +17,6 @@ AppEngine::AppEngine(QObject *parent)
 
 AppEngine::~AppEngine()
 {
-
 }
 
 void AppEngine::initEngine()
@@ -130,7 +129,6 @@ void AppEngine::removeConnection()
 
 void AppEngine::loginAuthenication()
 {
-
 #ifdef DUMMY_IGNORE_LOGIN
     MODEL->setLoginStatus(true);
     initConnection();
