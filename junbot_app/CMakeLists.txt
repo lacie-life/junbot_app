@@ -16,6 +16,10 @@ set(JSON_BuildTests OFF CACHE INTERNAL "")
 find_package(QT NAMES Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 find_package(Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 
+#if (ANDROID)
+#    include(${CMAKE_CURRENT_SOURCE_DIR}/android_openssl/android_openssl.cmake)
+#endif()
+
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QT_INCLUDES} ${QtQml_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/hdr/)
 
@@ -48,6 +52,7 @@ qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/qml.qrc)
 qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/res.qrc)
 qt5_add_resources(QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/config.qrc)
 
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(junbot_app
             ${HEADERS}
@@ -61,24 +66,36 @@ else()
                 ${SOURCES}
                 ${QT_RESOURCES}
         )
+#        add_android_openssl_libraries(junbot_app)
     else()
         add_executable(junbot_app
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
-                hdr/Comon/Common.h
         )
     endif()
 endif()
+
+set(ANDROID_EXTRA_LIBS
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libcrypto_1_1.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libssl_1_1.so
+CACHE INTERNAL "")
+
 
 target_compile_definitions(junbot_app
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(junbot_app
  # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts
+  -lstdc++
+)
+
 # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+#file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+#      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
