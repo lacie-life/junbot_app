@@ -2,9 +2,6 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 500
-    height: 148 + 30
-
     Rectangle {
         id: bg1
         anchors.fill: parent
@@ -23,8 +20,8 @@ Item {
     Image {
         id: vmc_logo
         anchors.centerIn: parent
-        sourceSize.width: 400
-        sourceSize.height: 148
+        sourceSize.width: parent.height * 400 / 148
+        sourceSize.height: parent.height * 0.8
         source: "qrc:/res/VMC_Logo.png"
     }
 }
