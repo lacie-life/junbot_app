@@ -23,8 +23,14 @@ public slots:
 
 private:
     void initMQTT();
+
+    // mqtt subcribe
     void initConnection();
+    void removeConnection();
+
+    // event handler
     void loginAuthenication();
+    void handleLogoutRequest();
     void sendDeliveryNodes();
     void handleLoginResponse(const QByteArray& message);
     void processStateResponse(const QByteArray& message);

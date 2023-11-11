@@ -49,6 +49,9 @@ public slots:
     void mqttSubcribe(RobotNode node);
     void mqttSubcribe(const QString& topic);
 
+    void mqttUnsubcribe(RobotNode node);
+    void mqttUnsubcribe(const QString& topic);
+
     void pub(QString nod, QString message);
     void pubRun(QString Target1, QString Target2, QString Target3);
 

@@ -20,7 +20,7 @@ Item {
         // remember this flag
 
         function removeItemAt(index) {
-            console.debug("Remote item at index:", index)
+            console.debug("Remove item at index:", index)
             switch (index) {
             case 0:
                 root.requestRemoveItem(item1)

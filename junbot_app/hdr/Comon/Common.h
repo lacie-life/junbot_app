@@ -16,6 +16,6 @@ struct NodeLocation {
     float z;
 };
 
-//extern const QMap<QString, NodeLocation> nodeMaps;
+extern const QMap<QString, NodeLocation> nodeMaps;
 
 #endif // COMMON_H

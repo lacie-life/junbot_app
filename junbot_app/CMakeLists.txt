@@ -72,6 +72,7 @@ else()
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
+                src/common/Common.cpp
         )
     endif()
 endif()

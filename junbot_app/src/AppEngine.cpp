@@ -9,8 +9,6 @@
 #include "QMQTTHandler.h"
 #include "RobotModel.h"
 
-const QMap<QString, NodeLocation> nodeMaps;
-
 AppEngine::AppEngine(QObject *parent)
     : QObject(parent)
 {
@@ -19,8 +17,7 @@ AppEngine::AppEngine(QObject *parent)
 
 AppEngine::~AppEngine()
 {
-    // DELETE_DEFS;
-    // DELETE_SCR_DEF;
+
 }
 
 void AppEngine::initEngine()
@@ -41,7 +38,7 @@ void AppEngine::initEngine()
     m_rootContext->setContextProperty("RobotModel",     RobotModel::getInstance());
 
     // init MQTT
-    initMQTT();(
+    initMQTT();
 }
 
 void AppEngine::startApplication()
@@ -73,7 +70,7 @@ void AppEngine::handleQmlEvent(int eventID)
     case AppEnums::E_EVENT_t::UserClickHome:
         MODEL->setCurrentScreenID(AppEnums::HomeScreen);
         break;
-    case AppEnums::E_EVENT_t::UserClickControl://extern const QMap<QString, NodeLocation> nodeMaps;
+    case AppEnums::E_EVENT_t::UserClickControl:
         MODEL->setCurrentScreenID(AppEnums::ControlScreen);
         break;
     case AppEnums::E_EVENT_t::UserClickInfo:
@@ -81,6 +78,9 @@ void AppEngine::handleQmlEvent(int eventID)
         break;
     case AppEnums::E_EVENT_t::LoginRequest:
         loginAuthenication();
+        break;
+    case AppEnums::E_EVENT_t::LogoutRequest:
+        handleLogoutRequest();
         break;
     case AppEnums::E_EVENT_t::SendDeliveryNodes:
         sendDeliveryNodes();
@@ -119,6 +119,15 @@ void AppEngine::initConnection()
     m_handler->mqttSubcribe("robot1/state");
 }
 
+void AppEngine::removeConnection()
+{
+    LOG_DBG;
+    RobotNode lastNode = m_handler->RobotNodes.last();
+    m_handler->mqttUnsubcribe(lastNode);
+    m_handler->mqttUnsubcribe("robot1/state");
+    m_handler->RobotNodes.pop_back();
+}
+
 void AppEngine::loginAuthenication()
 {
 
@@ -136,11 +145,19 @@ void AppEngine::loginAuthenication()
     m_handler->mqttPublish("robot1/login_request", loginData);
 }
 
+void AppEngine::handleLogoutRequest()
+{
+    MODEL->setLoginStatus(false);
+    removeConnection();
+    MODEL->setCurrentScreenID(AppEnums::E_SCREEN_t::InvalidScreen);
+}
+
 void AppEngine::sendDeliveryNodes()
 {
     LOG_DBG << "Current data:" << MODEL->deliveryNodes();
     QStringList listNodes;
-    for (const QString& node : MODEL->deliveryNodes()) {
+    const QStringList deliveryNodes = MODEL->deliveryNodes();
+    for (const QString& node : deliveryNodes) {
         if (!node.isEmpty()) {
             listNodes.append(node);
         }
