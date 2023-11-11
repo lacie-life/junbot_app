@@ -6,9 +6,6 @@ import "Component"
 
 Item {
     id: root
-    width: 1080
-    height: 720
-
     LoginBackground {
         id: bg
         anchors.fill: parent

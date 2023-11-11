@@ -14,8 +14,8 @@ Rectangle {
 
     Frame {
         id: connection_indicator
-        height: 70
         width: parent.width
+        height: parent.height * 0.05
         borderRadius: 10
         margins: [ 10, 10, 5, 10 ]
 
@@ -43,8 +43,8 @@ Rectangle {
     Frame {
         id: state_area
         anchors.top: connection_indicator.bottom
-        height: 600
         width: parent.width
+        height: parent.height * 0.6
         borderRadius: 10
         margins: [ 10, 10, 5, 10 ]
         Column {
