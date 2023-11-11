@@ -9,6 +9,8 @@
 #include "QMQTTHandler.h"
 #include "RobotModel.h"
 
+const QMap<QString, NodeLocation> nodeMaps;
+
 AppEngine::AppEngine(QObject *parent)
     : QObject(parent)
 {
@@ -71,7 +73,7 @@ void AppEngine::handleQmlEvent(int eventID)
     case AppEnums::E_EVENT_t::UserClickHome:
         MODEL->setCurrentScreenID(AppEnums::HomeScreen);
         break;
-    case AppEnums::E_EVENT_t::UserClickControl:
+    case AppEnums::E_EVENT_t::UserClickControl://extern const QMap<QString, NodeLocation> nodeMaps;
         MODEL->setCurrentScreenID(AppEnums::ControlScreen);
         break;
     case AppEnums::E_EVENT_t::UserClickInfo:

@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QSurfaceFormat fmt;
-    fmt.setVersion( 1, 4 );
+    fmt.setVersion( 3, 0 );
+    fmt.setDepthBufferSize(24);
     fmt.setProfile( QSurfaceFormat::CoreProfile );
     QSurfaceFormat::setDefaultFormat( fmt );
 
