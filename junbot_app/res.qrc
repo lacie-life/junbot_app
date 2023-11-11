@@ -37,5 +37,6 @@
         <file>fonts/FSMagistral/FSMagistral-MediumItalic.ttf</file>
         <file>res/padlock_32.png</file>
         <file>res/user_32.png</file>
+        <file>res/icon_bot.png</file>
     </qresource>
 </RCC>

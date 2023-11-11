@@ -10,9 +10,10 @@ class AppEnums
 public:
     enum E_SCREEN_t
     {
-        HomeScreen = 0,
+        InvalidScreen = 0,
+        HomeScreen,
         ControlScreen,
-        UserScreen,
+        InfoScreen,
     };
     Q_ENUM(E_SCREEN_t)
 
@@ -20,8 +21,9 @@ public:
     {
         UserClickHome = 0,
         UserClickControl,
-        UserClickAccount,
+        UserClickInfo,
         LoginRequest,
+        SendDeliveryNodes,
     };
     Q_ENUM(E_EVENT_t)
 

@@ -20,13 +20,11 @@
 
 #endif
 
-#define DEFS Constants_Def::instance()
-
 class Constants_Def : public QObject
 {
     Q_OBJECT
 public:
-    static Constants_Def* instance() {
+    static Constants_Def* getInstance() {
         static Constants_Def self;
         return &self;
     }

@@ -22,19 +22,17 @@ Item {
         anchors.top: root.top
         anchors.bottom: menuBar.top
         source: getScreenUrl(AppModel.currentScreenID)
+
     }
 
     function getScreenUrl(id) {
         switch (id) {
         case ENUMS.HomeScreen:
-            QmlHandler.qmlMessage("Home Screen");
             return SCREEN.QML_HOME
         case ENUMS.ControlScreen:
-            QmlHandler.qmlMessage("Control Screen");
             return SCREEN.QML_CONTROL
-        case ENUMS.UserScreen:
-            QmlHandler.qmlMessage("User Screen");
-            return SCREEN.QML_USER
+        case ENUMS.InfoScreen:
+            return SCREEN.QML_INFO
         default:
             return ""
         }

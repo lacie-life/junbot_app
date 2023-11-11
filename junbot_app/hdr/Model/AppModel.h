@@ -69,6 +69,7 @@ signals:
     void portChanged();
     void deliveryNodesChanged();
     void listNodesChanged();
+    void notifyLoginFail();
 
 private:
     AppModel(QObject* parent = nullptr);
