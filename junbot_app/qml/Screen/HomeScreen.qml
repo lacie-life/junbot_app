@@ -15,7 +15,7 @@ Rectangle {
     Frame {
         id: connection_indicator
         width: parent.width
-        height: parent.height * 0.05
+        height: parent.height * 0.15
         borderRadius: 10
         margins: [ 10, 10, 5, 10 ]
 
@@ -44,7 +44,7 @@ Rectangle {
         id: state_area
         anchors.top: connection_indicator.bottom
         width: parent.width
-        height: parent.height * 0.6
+        height: parent.height * 0.4
         borderRadius: 10
         margins: [ 10, 10, 5, 10 ]
         Column {
@@ -78,16 +78,21 @@ Rectangle {
         anchors.top: state_area.bottom
         width: parent.width
         height: parent.height - connection_indicator.height - state_area.height
+        property real referenceSize: Math.min(width / 2, height)
 
         Item {
             id: left
             anchors.left: parent.left
             width: parent.width / 2
             height: parent.height
+
             ControllerButton {
                 id: left_button
                 anchors.centerIn: parent
                 anchors.horizontalCenterOffset: -width
+                width: controll_area.referenceSize / 5
+                height: width
+                radius: width / 3
                 iconName: "left"
                 onClicked: {
                     QmlHandler.qmlMessage("turn left")
@@ -98,6 +103,9 @@ Rectangle {
                 id: right_button
                 anchors.centerIn: parent
                 anchors.horizontalCenterOffset: width
+                width: controll_area.referenceSize / 5
+                height: width
+                radius: width / 3
                 iconName: "right"
                 onClicked: {
                     QmlHandler.qmlMessage("turn right")
@@ -108,6 +116,9 @@ Rectangle {
                 id: up_button
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: -height * 5/6
+                width: controll_area.referenceSize / 5
+                height: width
+                radius: width / 3
                 iconName: "up"
                 onClicked: {
                     QmlHandler.qmlMessage("forward")
@@ -118,6 +129,9 @@ Rectangle {
                 id: down_button
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: height * 5/6
+                width: controll_area.referenceSize / 5
+                height: width
+                radius: width / 3
                 iconName: "down"
                 onClicked: {
                     QmlHandler.qmlMessage("back")
@@ -134,9 +148,9 @@ Rectangle {
             ControllerButton {
                 id: stop_button
                 anchors.centerIn: parent
-                width: 200
-                height: 200
-                radius: 50
+                width: controll_area.referenceSize / 2
+                height: width
+                radius: width / 3
                 rotateOnPress: true
                 backgroundColor: "#FE5757"
                 hoveredColor: "#FF4040"

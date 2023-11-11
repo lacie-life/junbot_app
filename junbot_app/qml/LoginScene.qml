@@ -14,8 +14,8 @@ Item {
     Rectangle {
         id: login_form
         anchors.centerIn: parent
-        width: 500
-        height: 600
+        width: parent.width * 50/72
+        height: parent.height * 15/27
         border.width: 2
         border.color: "#cacaca"
         color: "transparent"
@@ -25,6 +25,8 @@ Item {
             id: vmc_logo
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
+            width: parent.width
+            height: parent.height / 4
         }
 
         FontLoader {
@@ -33,9 +35,10 @@ Item {
         }
 
         Text {
+            id: login_label
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: vmc_logo.bottom
-            anchors.topMargin: 7
+            anchors.topMargin: parent.height * 0.02
             font {
                 pixelSize: 45
                 family: vt_font.name
@@ -48,9 +51,11 @@ Item {
             id: username_field
             anchors {
                 horizontalCenter: parent.horizontalCenter
-                top: vmc_logo.bottom
-                topMargin: 100
+                top: login_label.bottom
+                topMargin: parent.height * 0.03
             }
+            width: parent.width * 4 / 5
+            height: parent.height * 1 / 6
         }
 
         LoginInput {
@@ -58,8 +63,10 @@ Item {
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 top: username_field.bottom
-                topMargin: 20
+                topMargin: parent.height * 0.03
             }
+            width: parent.width * 4 / 5
+            height: parent.height * 1 / 6
             isPassword: true
         }
 
@@ -67,9 +74,11 @@ Item {
             id: login_button
             anchors {
                 top: passwrd_field.bottom
-                topMargin: 60
+                topMargin: parent.height * 0.03
                 horizontalCenter: parent.horizontalCenter
             }
+            width: parent.width * 4 / 5
+            height: parent.height * 1 / 6
             onRequestLogin: {
                 hide_message_timer.stop()
                 shake_animation.stop()

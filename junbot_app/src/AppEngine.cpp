@@ -121,9 +121,12 @@ void AppEngine::initConnection()
 
 void AppEngine::loginAuthenication()
 {
+
+#ifdef DUMMY_IGNORE_LOGIN
     MODEL->setLoginStatus(true);
     initConnection();
     MODEL->setCurrentScreenID(AppEnums::E_SCREEN_t::HomeScreen);
+#endif
     LOG_DBG << "Username: " << MODEL->userName();
     LOG_DBG << "Password: " << MODEL->password();
 
