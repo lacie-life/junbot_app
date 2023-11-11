@@ -11,7 +11,10 @@ Window
     maximumWidth: width
     minimumHeight: height
     minimumWidth: width
+//    width: parent.width
+//    height: parent.height
     visible: true
+    visibility: Window.FullScreen
 
     Item {
         id: scene_loader

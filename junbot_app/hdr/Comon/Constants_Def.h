@@ -59,9 +59,9 @@ private:
 
 
     /********************************************** GENERAL **********************************************/
-    DEF_CONST(int,      MAX_WIDTH,          720)
-    DEF_CONST(int,      MAX_HEIGHT,         1080)
-    DEF_CONST(int,      MENU_BAR_WIDTH,     80)
+    DEF_CONST(int,      MAX_WIDTH,          480)
+    DEF_CONST(int,      MAX_HEIGHT,         854)
+    DEF_CONST(int,      MENU_BAR_WIDTH,     30)
 
     // constant color
     DEF_CONST(QColor,   COLOR_SHADOW,       "#3F3F3F")
