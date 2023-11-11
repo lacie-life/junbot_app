@@ -41,7 +41,7 @@ void AppEngine::initEngine()
     m_rootContext->setContextProperty("RobotModel",     RobotModel::getInstance());
 
     // init MQTT
-    initMQTT();
+    initMQTT();(
 }
 
 void AppEngine::startApplication()
@@ -121,6 +121,9 @@ void AppEngine::initConnection()
 
 void AppEngine::loginAuthenication()
 {
+    MODEL->setLoginStatus(true);
+    initConnection();
+    MODEL->setCurrentScreenID(AppEnums::E_SCREEN_t::HomeScreen);
     LOG_DBG << "Username: " << MODEL->userName();
     LOG_DBG << "Password: " << MODEL->password();
 
