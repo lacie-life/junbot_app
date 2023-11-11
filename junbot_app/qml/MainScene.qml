@@ -9,7 +9,7 @@ Item {
     MenuBar {
         id: menuBar
         width: parent.width
-        height: parent.height * 0.05
+        height: parent.height * 0.1
         anchors.left: root.left
         anchors.bottom: root.bottom
     }
@@ -18,7 +18,7 @@ Item {
         id: screenLoader
         visible: true
         width: parent.width
-        height: parent.height * 0.95
+        height: parent.height * 0.9
         anchors.top: root.top
         anchors.bottom: menuBar.top
         source: getScreenUrl(AppModel.currentScreenID)
