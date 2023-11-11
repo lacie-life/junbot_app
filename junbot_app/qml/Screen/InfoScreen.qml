@@ -34,4 +34,39 @@ Item {
         font.bold: true
         text: qsTr("Robot VDR-01 of Viettel Manufacturing")
     }
+
+    Rectangle{
+            id: logout_button
+            width: 200
+            height: 75
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 20
+            color: "red"
+            radius: 40
+            Text {
+                id: log_text
+                anchors.centerIn: parent
+                text: qsTr("Log out")
+                font.pixelSize: 30
+                font.bold: true
+                color: "white"
+
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    QmlHandler.qmlSendEvent(ENUMS.LogoutRequest)
+                }
+                onPressed: {
+                    logout_button.color = "#BC1010"
+                    log_text.color = "#CAC7C7"
+                }
+                onReleased: {
+                    logout_button.color = "red"
+                    log_text.color = "white"
+                }
+            }
+        }
 }
