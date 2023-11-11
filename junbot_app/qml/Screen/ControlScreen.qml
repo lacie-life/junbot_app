@@ -127,7 +127,7 @@ Item {
 
         QText {
             anchors.centerIn: parent
-            anchors.verticalCenterOffset: (parent.bottomMargin - parent.topMargin) / 2
+//            anchors.verticalCenterOffset: (parent.bottomMargin - parent.topMargin) / 2
             font.pixelSize: 50
             font.bold: true
             text: "START"
