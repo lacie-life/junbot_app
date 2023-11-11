@@ -9,7 +9,7 @@ Item {
     Frame {
         id: delivery_target
         width: parent.width
-        height: 250
+        height: parent.height * 0.25
         borderRadius: 10
         margins: [ 10 ]
 
@@ -52,7 +52,7 @@ Item {
         id: node_grid
         anchors.top: delivery_target.bottom
         width: parent.width
-        height: 600
+        height: parent.height * 0.6
         borderRadius: 10
         margins: [ 10 ]
 

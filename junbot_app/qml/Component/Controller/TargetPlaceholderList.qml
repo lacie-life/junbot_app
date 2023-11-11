@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: 720
-    height: 100
+    width: parent.width
+    height: parent.height / 2
     // public for others
     readonly property var targets: [self.item1, self.item2, self.item3]
 
@@ -45,8 +45,8 @@ Item {
         anchors.fill: parent
         TargetPlaceholder {
             id: first_item
-            width: 720 / 3
-            height: 100
+            width: parent.width / 3
+            height: parent.height
             currentData: self.item1
             margins: [ 10, 15, 10, 30 ]
             onClicked: self.removeItemAt(0)
@@ -54,8 +54,8 @@ Item {
 
         TargetPlaceholder {
             id: second_item
-            width: 720 / 3
-            height: 100
+            width: parent.width / 3
+            height: parent.height
             currentData: self.item2
             margins: [ 10, 25 ]
             onClicked: self.removeItemAt(1)
@@ -63,8 +63,8 @@ Item {
 
         TargetPlaceholder {
             id: third_item
-            width: 720 / 3
-            height: 100
+            width: parent.width / 3
+            height: parent.height
             currentData: self.item3
             margins: [ 10, 30, 10, 15 ]
             onClicked: self.removeItemAt(2)
