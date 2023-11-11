@@ -1,7 +1,5 @@
 # junbot_app
 
-[Qt for Android](https://www.youtube.com/watch?v=w2RRgRGHsDA)
-
 # Installation
 
 1. QMQTT
@@ -24,6 +22,45 @@ pip install paho-mqtt
 
 3. Run
 
+4. Android Export
+
+4.1. System requirements
+
+- Qt 5.15.2 (Install with Android SDK, NDK, JDK)
+- Ubuntu 20.04
+- Android Phone (Android 7.0 or higher)
+
+4.2. Config Android SDK, NDK, JDK
+
+- Install openjdk-11-jdk
+
+```
+sudo apt-get install openjdk-11-jdk openjdk-11-jre
+sudo apt-get install openjdk-11-jdk-headless openjdk-11-jre-headless
+```
+
+- Open Qt Creator => Tools => Options => Devices => Android => JDK, NDK, SDK
+- Config JDK location: ```/usr/lib/jvm/java-11-openjdk-amd64```
+- Config Android SDK localtion: ```/home/<user>/Android/Sdk```
+- Update Android SDK by SDK Manager
+- If you have error with command_line tools, download following the link they given and extract to ```/home/<user>/Android/Sdk```. Then, update Android SDK again. 
+![cmd](./demo/cmdline_tools.png)
+
+4.3. Config build kit
+
+![kit](./demo/kits.png)
+
+![kit](./demo/kit_2.png)
+
+4.4. Build and run
+
+- Build qtmqtt for Android Kit (Build both arm64-v8a and armeabi-v7a)
+- Install qtmqtt to Android Kit: Go to build folder of qtmqtt and run 
+
+```make install```
+
+- Build junbot_app for Android Kit
+- Run junbot_app on Android Phone
 
 # TODO:
 
