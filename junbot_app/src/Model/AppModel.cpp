@@ -1,5 +1,6 @@
 #include "AppModel.h"
 #include "AppEnums.h"
+#include "Common.h"
 
 AppModel *AppModel::getInstance()
 {
@@ -19,18 +20,11 @@ AppModel::AppModel(QObject *parent)
     m_robotMess = "";
     // Create default available nodes
     m_listNodes.clear();
-    m_listNodes << QLatin1String("A")
-                << QLatin1String("B")
-                << QLatin1String("C")
-                << QLatin1String("D")
-                << QLatin1String("E")
-                << QLatin1String("F")
-                << QLatin1String("G")
-                << QLatin1String("H")
-                << QLatin1String("I")
-                << QLatin1String("J")
-                << QLatin1String("K")
-                << QLatin1String("L");
+    const QStringList listNodeNames = nodeMaps.keys();
+    for (const QString& nodeName : listNodeNames)
+    {
+        m_listNodes.append(nodeName);
+    }
 
     // Create default target nodes
     m_deliveryNodes.clear();

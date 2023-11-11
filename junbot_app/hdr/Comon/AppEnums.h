@@ -23,6 +23,7 @@ public:
         UserClickControl,
         UserClickInfo,
         LoginRequest,
+        LogoutRequest,
         SendDeliveryNodes,
     };
     Q_ENUM(E_EVENT_t)

@@ -122,6 +122,18 @@ void QMqttHandler::mqttSubcribe(const QString &topic)
     }
 }
 
+void QMqttHandler::mqttUnsubcribe(RobotNode node)
+{
+    LOG_DBG << "Unsubcribe node topic:" << node.current_state_topic;
+    m_client->unsubscribe(node.current_state_topic);
+}
+
+void QMqttHandler::mqttUnsubcribe(const QString &topic)
+{
+    LOG_DBG << "Unsubcribe topic:" << topic;
+    m_client->unsubscribe(topic);
+}
+
 void QMqttHandler::setMqttMessage(QJsonObject &msg)
 {
 
