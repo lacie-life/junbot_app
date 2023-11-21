@@ -16,6 +16,11 @@ set(JSON_BuildTests OFF CACHE INTERNAL "")
 find_package(QT NAMES Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 find_package(Qt5 COMPONENTS Core Quick Mqtt Widgets Charts REQUIRED)
 
+#target_sources(aab
+#  PRIVATE
+#    src/common/common.cpp
+#)
+
 #if (ANDROID)
 #    include(${CMAKE_CURRENT_SOURCE_DIR}/android_openssl/android_openssl.cmake)
 #endif()
@@ -65,6 +70,7 @@ else()
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
+
         )
 #        add_android_openssl_libraries(junbot_app)
     else()
@@ -72,14 +78,14 @@ else()
                 ${HEADERS}
                 ${SOURCES}
                 ${QT_RESOURCES}
-                src/common/Common.cpp
+                src/Comon/Common.cpp
         )
     endif()
 endif()
 
 set(ANDROID_EXTRA_LIBS
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libcrypto_1_1.so
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libssl_1_1.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libcrypto.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libssl.so
 CACHE INTERNAL "")
 
 

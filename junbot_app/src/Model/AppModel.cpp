@@ -2,6 +2,8 @@
 #include "AppEnums.h"
 #include "Common.h"
 
+//const QMap<QString, NodeLocation> nodeMaps;
+
 AppModel *AppModel::getInstance()
 {
     static AppModel self;
@@ -12,9 +14,9 @@ AppModel::AppModel(QObject *parent)
     : QObject (parent)
     , m_currentScreenID { static_cast<int>(AppEnums::InvalidScreen) }
     , m_connectionState { static_cast<int>(AppEnums::Disconnected) }
-    , m_username { "" }
-    , m_password { "" }
-    , m_hostname { "localhost" }
+    , m_username { "lacie" }
+    , m_password { "123456" }
+    , m_hostname { "10.42.0.1" }
     , m_port { 1883 }
 {
     m_robotMess = "";

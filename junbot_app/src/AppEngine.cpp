@@ -108,7 +108,7 @@ void AppEngine::initConnection()
 {
     LOG_DBG;
     RobotNode node;
-    node.ip = "xx.xx.xx.xx";
+    node.ip = "10.42.0.1";
     node.name = "robot1";
     node.current_state_topic = "robot1/state";
     node.control_topic = "robot1/control";
